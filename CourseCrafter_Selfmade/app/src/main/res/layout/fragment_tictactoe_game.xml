@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:showDividers="middle|beginning|end"
+        android:divider="@drawable/grid_divider">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 1"
+            android:backgroundTint="#ffffff"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 2"
+            android:backgroundTint="#ffffff"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:contentDescription="Feld 3"
+            android:textSize="24sp"
+            android:backgroundTint="#ffffff"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 4"
+            android:backgroundTint="#ffffff"/>
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 5"
+            android:backgroundTint="#ffffff"/>
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 6"
+            android:backgroundTint="#ffffff"/>
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 7"
+            android:backgroundTint="#ffffff"/>
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textSize="24sp"
+            android:contentDescription="Feld 8"
+            android:backgroundTint="#ffffff"/>
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:contentDescription="Feld 9"
+            android:textSize="24sp"
+            android:backgroundTint="#ffffff"
+            />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/gewinnerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gewinner:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/neuesSpielButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neues Spiel"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Neues Spiel starten" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/spieler1PunkteTextView"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="Spieler 1: 0"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/spieler2PunkteTextView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Spieler 2: 0"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.rechner:
                     replaceFragment(new RechnerFragment());
                     break;
+                case R.id.tictactoe:
+                    replaceFragment(new TicTacToeFragment());
+                    break;
+
             }
             return true;
         });

@@ -5,4 +5,5 @@
     <string name="modulplan_fragment_title">Modulplan</string>
     <string name="faq_fragment_title">FAQ</string>
     <string name="rechner_fragment_title">Rechner</string>
+    <string name="tictacto_fragment_title">Tic Tac Toe</string>
 </resources>
