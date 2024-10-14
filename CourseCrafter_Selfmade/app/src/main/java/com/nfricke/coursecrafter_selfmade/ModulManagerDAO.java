@@ -30,4 +30,11 @@ public class ModulManagerDAO {
         modulManager = gson.fromJson(json,type);
         return modulManager;
     }
+
+    public void readModulManager(ModulManager modulManager) {
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("moduldatafricke",null);
+        Type type = new TypeToken<ModulManager>(){}.getType();
+        modulManager.addAll(gson.fromJson(json,type));
+    }
 }

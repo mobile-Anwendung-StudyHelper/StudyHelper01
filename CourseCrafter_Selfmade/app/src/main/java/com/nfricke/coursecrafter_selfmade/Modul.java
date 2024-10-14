@@ -2,6 +2,8 @@ package com.nfricke.coursecrafter_selfmade;
 
 public class Modul {
     private int anzahlVeranstaltungen = 3;
+    public String[] wochentage;
+    public String[] bloecke;
     private String modulName;
     private String profName;
     private int[] tag = new int[anzahlVeranstaltungen];
@@ -11,34 +13,32 @@ public class Modul {
     public Modul() {
     }
 
-    public Modul(String modulName, String profName, int[] tag, int[] block, String[] raum) {
-        this.modulName = modulName;
-        this.profName = profName;
-        this.tag = tag;
-        this.block = block;
-        this.raum = raum;
+    public Modul(String[] sW, String [] sB, String n, String p, int[] t, int[] b, String[] r) {
+        this.wochentage = sW;
+        this.bloecke = sB;
+        this.modulName = n;
+        this.profName = p;
+        this.tag = t;
+        this.block = b;
+        this.raum = r;
     }
 
     //------------------------------------------
-    public String getModulName() {
-        return modulName;
-    }
+    public String getModulName() { return modulName; }
 
-    public String getProfName() {
-        return profName;
-    }
+    public String getProfName() { return profName; }
 
-    public int getTag(int index) {
-        return tag[index];
-    }
+    public int getTag(int index) { return tag[index]; }
 
-    public int getBlock(int index) {
-        return block[index];
-    }
+    public String getTagString(int index) { return wochentage[tag[index]]; }
 
-    public String getRaum(int index) {
-        return raum[index];
-    }
+    public int getBlock(int index) { return block[index]; }
+
+    public String getBlockString(int index) { return bloecke[block[index]]; }
+
+    public String getBlockIntString(int index) { return block[index] + " -> " + bloecke[block[index]]; }
+
+    public String getRaum(int index) { return raum[index]; }
 
     //------------------------------------------
     public void setModulName(String modulName) {
@@ -75,5 +75,4 @@ public class Modul {
         }
         System.out.println("-------");
     }
-
 }
