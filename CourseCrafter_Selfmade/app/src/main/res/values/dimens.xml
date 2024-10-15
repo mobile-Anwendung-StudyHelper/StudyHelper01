@@ -2,4 +2,7 @@
 <resources>
     <dimen name="button_width">100dp</dimen>
     <dimen name="button_height">100dp</dimen>
+
+    <dimen name="table_width">60dp</dimen>
+    <dimen name="table_height">55dp</dimen>
 </resources>

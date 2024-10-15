@@ -1,6 +1,8 @@
 package com.nfricke.coursecrafter_selfmade;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         //setContentView(R.layout.activity_main);
         setContentView(binding.getRoot());
-
         modulManagerDAO = new ModulManagerDAO(this);
 
         ModulManager initialmodulManager = new ModulManager();
