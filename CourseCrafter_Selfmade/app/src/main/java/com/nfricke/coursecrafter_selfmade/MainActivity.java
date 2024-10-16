@@ -1,8 +1,6 @@
 package com.nfricke.coursecrafter_selfmade;
 
 import android.os.Bundle;
-import android.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         modulManagerDAO.saveModulManager(initialmodulManager);
 
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
-
 
 
         replaceFragment(new ModullistFragment(this));
