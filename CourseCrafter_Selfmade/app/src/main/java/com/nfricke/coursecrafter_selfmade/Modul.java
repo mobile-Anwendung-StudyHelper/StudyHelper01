@@ -30,15 +30,13 @@ public class Modul {
 
     public int getTag(int index) { return tag[index]; }
 
-    public String getTagString(int index) { return wochentage[tag[index]]; }
+    public String getTagString(int index) { if (tag[index] == 0) return "-"; else return wochentage[tag[index]]; }
 
     public int getBlock(int index) { return block[index]; }
 
-    public String getBlockString(int index) { return bloecke[block[index]]; }
+    public String getBlockString(int index) { if (block[index] == 0) return "-"; else return bloecke[block[index]]; }
 
-    public String getBlockIntString(int index) { return block[index] + " -> " + bloecke[block[index]]; }
-
-    public String getRaum(int index) { return raum[index]; }
+    public String getRaum(int index) {  if (raum[index].isEmpty()) return "-"; else return raum[index]; }
 
     //------------------------------------------
     public void setModulName(String modulName) {

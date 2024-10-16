@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="Sample Module Name" />
+        tools:text="Module Name" />
 
     <!-- Professor Name -->
     <TextView
@@ -28,9 +28,7 @@
     <!-- Schedule Details Table -->
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="0dp"
-        android:stretchColumns="1,2,3">
+        android:layout_height="wrap_content">
 
         <TableRow>
             <TextView

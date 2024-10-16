@@ -12,14 +12,13 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     public ModulManager modulManager;
     public ModulManagerDAO modulManagerDAO;
-    public String[] wochentage = new String[]{"","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
-    public String[] bloecke = new String[]{"","8:15-9:45","10:15-11:45","12:15-13:45","14:15-15:45","16:00-17:30","17:45-19:15"};
+    public String[] wochentage = new String[]{"<auswahl>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
+    public String[] bloecke = new String[]{"<auswahl>","8:15-9:45","10:15-11:45","12:15-13:45","14:15-15:45","16:00-17:30","17:45-19:15"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(R.layout.activity_main);
         setContentView(binding.getRoot());
         modulManagerDAO = new ModulManagerDAO(this);
 
@@ -27,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         initialmodulManager.add(new Modul(wochentage, bloecke, "Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}));
         initialmodulManager.add(new Modul(wochentage, bloecke, "Name2", "Prof2", new int[]{2,3,1}, new int[]{5,6,4}, new String[]{"W201","W202","W203"}));
         initialmodulManager.add(new Modul(wochentage, bloecke, "Name3", "Prof3", new int[]{3,1,2}, new int[]{6,4,5}, new String[]{"W301","W302","W303"}));
+        initialmodulManager.add(new Modul(wochentage, bloecke, "Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}));
         modulManagerDAO.saveModulManager(initialmodulManager);
 
         modulManagerDAO.readModulManager(modulManager = new ModulManager());

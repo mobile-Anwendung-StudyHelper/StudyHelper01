@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Module Name Input -->
+        <EditText
+            android:id="@+id/modulNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Modulname"
+            android:inputType="text" />
+
+        <!-- Professor Name Input -->
+        <EditText
+            android:id="@+id/profNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Professor"
+            android:inputType="text" />
+
+        <!-- Veranstalltung 1: -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veranstalltung 1:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingTop="16dp"
+            android:paddingStart="8dp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tag: "
+                    android:paddingLeft="16dp"/>
+                <Spinner
+                    android:id="@+id/tagSpinnerInput1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Block: "
+                    android:paddingLeft="16dp"/>
+                <Spinner
+                    android:id="@+id/blockSpinnerInput1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Raum: "
+                    android:paddingLeft="16dp"/>
+                <EditText
+                    android:id="@+id/raumInput1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Raum"
+                    android:inputType="text" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- Veranstalltung 2: -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veranstalltung 2:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingStart="8dp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tag: "
+                    android:paddingLeft="16dp"/>
+                <Spinner
+                    android:id="@+id/tagSpinnerInput2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Block: "
+                    android:paddingLeft="16dp"/>
+                <Spinner
+                    android:id="@+id/blockSpinnerInput2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Raum: "
+                    android:paddingLeft="16dp"/>
+                <EditText
+                    android:id="@+id/raumInput2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Raum"
+                    android:inputType="text" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- Veranstalltung 3: -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veranstalltung 3:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingStart="8dp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tag: "
+                    android:paddingLeft="16dp"/>
+                <Spinner
+                    android:id="@+id/tagSpinnerInput3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Block: "
+                    android:paddingLeft="16dp"/>
+                <Spinner
+                    android:id="@+id/blockSpinnerInput3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Raum: "
+                    android:paddingLeft="16dp"/>
+                <EditText
+                    android:id="@+id/raumInput3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Raum"
+                    android:inputType="text" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+<!--
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1,2,3">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tag"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Block"
+                android:textStyle="bold"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raum"
+                android:textStyle="bold"
+                android:padding="8dp" />
+        </TableRow>
+
+        <TableRow>
+            <Spinner
+                android:id="@+id/tagSpinnerInput1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/blockSpinnerInput1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/raumInput1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Raum"
+                android:inputType="text" />
+
+        </TableRow>
+
+
+
+
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+-->
