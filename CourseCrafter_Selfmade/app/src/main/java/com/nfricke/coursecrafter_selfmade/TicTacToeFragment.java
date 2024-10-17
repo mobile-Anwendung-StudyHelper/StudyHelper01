@@ -9,7 +9,6 @@ import android.widget.GridLayout;
 import android.widget.Toast;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
-import android.util.Log;
 
 public class TicTacToeFragment extends Fragment implements View.OnClickListener {
 

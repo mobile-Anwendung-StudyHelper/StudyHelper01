@@ -11,8 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:background="#4CAF50">
+        tools:ignore="MissingConstraints">
 
 
         <TextView
@@ -21,10 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="StudyHelper"
-            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="24sp"
-            android:paddingStart="16dp"
+            android:paddingStart="8dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp" />
 
