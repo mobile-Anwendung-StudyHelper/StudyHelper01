@@ -19,12 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="StudyHelper"
             android:textStyle="bold"
             android:textSize="24sp"
-            android:paddingStart="8dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp" />
+            android:padding="16dp"/>
 
 
     </com.google.android.material.appbar.AppBarLayout>
