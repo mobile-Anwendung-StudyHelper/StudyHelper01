@@ -119,6 +119,7 @@ public class ModullistFragment extends Fragment {
 
                         // Add new Modul instance
                         parent.modulManager.add(new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum));
+                        parent.modulManagerDAO.saveModulManager(parent.modulManager);
                         modulAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), "Modul hinzugefügt", Toast.LENGTH_SHORT).show();
                     }
@@ -196,6 +197,7 @@ public class ModullistFragment extends Fragment {
 
                         // replace new Modul instance
                         parent.modulManager.set(position, new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum));
+                        parent.modulManagerDAO.saveModulManager(parent.modulManager);
                         modulAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), "Modul gespeichert", Toast.LENGTH_SHORT).show();
                     }
