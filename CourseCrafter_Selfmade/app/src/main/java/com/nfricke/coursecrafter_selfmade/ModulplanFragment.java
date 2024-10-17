@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Calendar;
+
 public class ModulplanFragment extends Fragment {
 
     private MainActivity parent;
@@ -28,6 +30,33 @@ public class ModulplanFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set currentDayIndex to the current weekday
+        Calendar calendar = Calendar.getInstance();
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+        switch (today) {
+            case Calendar.MONDAY:
+                currentDayIndex = 1;
+                break;
+            case Calendar.TUESDAY:
+                currentDayIndex = 2;
+                break;
+            case Calendar.WEDNESDAY:
+                currentDayIndex = 3;
+                break;
+            case Calendar.THURSDAY:
+                currentDayIndex = 4;
+                break;
+            case Calendar.FRIDAY:
+                currentDayIndex = 5;
+                break;
+            case Calendar.SATURDAY:
+                currentDayIndex = 6;
+                break;
+            case Calendar.SUNDAY:
+                currentDayIndex = 7;
+                break;
+        }
     }
 
     @Nullable

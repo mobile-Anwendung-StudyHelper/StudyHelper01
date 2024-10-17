@@ -2,23 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/modullist"
-        android:title="@string/modullist_fragment_title"
-        android:icon="@drawable/baseline_format_list_bulleted_24"/>
-    <item
         android:id="@+id/modulplan"
         android:title="@string/modulplan_fragment_title"
         android:icon="@drawable/baseline_calendar_today_24"/>
     <item
-        android:id="@+id/faq"
-        android:title="@string/faq_fragment_title"
-        android:icon="@drawable/baseline_question_mark_24"/>
+        android:id="@+id/modullist"
+        android:title="@string/modullist_fragment_title"
+        android:icon="@drawable/baseline_format_list_bulleted_24"/>
     <item
-        android:id="@+id/rechner"
-        android:title="@string/rechner_fragment_title"
-        android:icon="@drawable/baseline_calculate_24"/>
-    <item
-        android:id="@+id/tictactoe"
-        android:title="@string/tictacto_fragment_title"
-        android:icon="@drawable/game_adaptive_fore"/>
+        android:id="@+id/nav"
+        android:title="@string/nav_fragment_title"
+        android:icon="@drawable/baseline_more_horiz_24"/>
 </menu>

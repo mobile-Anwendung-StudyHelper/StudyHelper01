@@ -11,10 +11,10 @@ import com.nfricke.coursecrafter_selfmade.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     public ModulManager modulManager;
     public ModulManagerDAO modulManagerDAO;
-    private TextView appBarText;
+    public TextView appBarText;
     public String[] wochentage = new String[]{"<auswahl>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
     public String[] bloecke = new String[]{"<auswahl>","8:15-9:45","10:15-11:45","12:15-13:45","14:15-15:45","16:00-17:30","17:45-19:15"};
 
@@ -38,36 +38,32 @@ public class MainActivity extends AppCompatActivity {
 
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
         
-        replaceFragment(new ModullistFragment(this));
-        appBarText.setText("StudyHelper -> " + getString(R.string.modullist_fragment_title));
+        replaceFragment(new ModulplanFragment(this));
+        appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.modullist:
-                    replaceFragment(new ModullistFragment(this));
-                    appBarText.setText("StudyHelper -> " + getString(R.string.modullist_fragment_title));
-                    break;
                 case R.id.modulplan:
                     replaceFragment(new ModulplanFragment(this));
                     appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
                     break;
+                case R.id.modullist:
+                    replaceFragment(new ModullistFragment(this));
+                    appBarText.setText("StudyHelper -> " + getString(R.string.modullist_fragment_title));
+                    break;
+                case R.id.nav:
+                    replaceFragment(new NavFragment());
+                    appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
+                    break;
                 case R.id.faq:
                     replaceFragment(new FAQFragment());
                     appBarText.setText("StudyHelper -> " + getString(R.string.faq_fragment_title));
-                    break;
-                case R.id.rechner:
-                    replaceFragment(new RechnerFragment());
-                    appBarText.setText("StudyHelper -> " + getString(R.string.rechner_fragment_title));
-                    break;
-                case R.id.tictactoe:
-                    replaceFragment(new TicTacToeFragment());
-                    appBarText.setText("StudyHelper -> " + getString(R.string.tictacto_fragment_title));
                     break;
             }
             return true;
         });
     }
 
-    private void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout,fragment);

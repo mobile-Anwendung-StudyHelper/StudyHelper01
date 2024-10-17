@@ -13,7 +13,7 @@ public class SwipeToDeleteListener extends GestureDetector.SimpleOnGestureListen
     private final ListView listView;
     private ModulManager modulManager;
     private FragmentActivity activity;
-    private ModulAdapter modulAdapter;
+    private ModulListAdapter modulAdapter;
     private ModulManagerDAO modulManagerDAO;
 
     // Swipe gesture thresholds
@@ -21,7 +21,7 @@ public class SwipeToDeleteListener extends GestureDetector.SimpleOnGestureListen
     private static final int SWIPE_THRESHOLD_VELOCITY = 100; // Minimum velocity in pixels/second
     private static final int SWIPE_MAX_OFF_PATH = 250; // Maximum perpendicular deviation in pixels
 
-    public SwipeToDeleteListener(ListView listView, ModulManager modulManager, FragmentActivity activity, ModulAdapter modulAdapter, ModulManagerDAO modulManagerDAO) {
+    public SwipeToDeleteListener(ListView listView, ModulManager modulManager, FragmentActivity activity, ModulListAdapter modulAdapter, ModulManagerDAO modulManagerDAO) {
         this.listView = listView;
         this.modulAdapter = modulAdapter;
         this.activity = activity;

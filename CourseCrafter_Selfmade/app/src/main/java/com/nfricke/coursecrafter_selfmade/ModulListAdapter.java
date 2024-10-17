@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class ModulAdapter extends ArrayAdapter<Modul>{
+public class ModulListAdapter extends ArrayAdapter<Modul>{
     // invoke the suitable constructor of the ArrayAdapter class
-    public ModulAdapter(@NonNull Context context, ModulManager modulManager) {
+    public ModulListAdapter(@NonNull Context context, ModulManager modulManager) {
         // pass the context and arrayList for the super
         // constructor of the ArrayAdapter class
         super(context, 0, modulManager);
