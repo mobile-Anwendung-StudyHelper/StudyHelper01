@@ -25,7 +25,7 @@ public class ModulAdapter extends ArrayAdapter<Modul>{
 
         // of the recyclable view is null then inflate the custom layout for the same
         if (currentItemView == null) {
-            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_modullist_item, parent, false);
+            currentItemView = LayoutInflater.from(getContext()).inflate(R.layout.modullist_item, parent, false);
         }
 
         // get the position of the view from the ArrayAdapter

@@ -46,7 +46,10 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.filament.android)
     implementation(libs.gridlayout)
+    implementation(libs.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //implementation("androidx.cardview:cardview:1.0.0")
 }
