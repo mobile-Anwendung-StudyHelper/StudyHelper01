@@ -3,7 +3,9 @@ package com.nfricke.coursecrafter_selfmade;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -64,6 +66,12 @@ public class ModullistFragment extends Fragment {
                 modulAdapter.notifyDataSetChanged();
                 return true;
             }
+        });
+
+        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new SwipeToDeleteListener(modulListView, parent.modulManager, getActivity(), modulAdapter, parent.modulManagerDAO));
+        modulListView.setOnTouchListener((v, event) -> {
+            gestureDetector.onTouchEvent(event);
+            return false;
         });
 
         return view;
