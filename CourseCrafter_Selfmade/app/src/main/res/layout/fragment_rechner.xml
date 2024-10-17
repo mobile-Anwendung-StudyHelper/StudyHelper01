@@ -1,15 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RechnerFragment">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rechner_fragment_title"
-        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Display for the calculator -->
+        <TextView
+            android:id="@+id/display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:gravity="end"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:text="0" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:rowCount="6"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/buttonClear" android:text="C" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonBack" android:text="\u25C4" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonProzent" android:text="%" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonDivide" android:text="/" style="@style/CalculatorButton" />
+
+            <Button android:id="@+id/button7" android:text="7" style="@style/CalculatorButton" />
+            <Button android:id="@+id/button8" android:text="8" style="@style/CalculatorButton" />
+            <Button android:id="@+id/button9" android:text="9" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonMultiply" android:text="*" style="@style/CalculatorButton" />
+
+            <Button android:id="@+id/button4" android:text="4" style="@style/CalculatorButton" />
+            <Button android:id="@+id/button5" android:text="5" style="@style/CalculatorButton" />
+            <Button android:id="@+id/button6" android:text="6" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonSubtract" android:text="-" style="@style/CalculatorButton" />
+
+            <Button android:id="@+id/button1" android:text="1" style="@style/CalculatorButton" />
+            <Button android:id="@+id/button2" android:text="2" style="@style/CalculatorButton" />
+            <Button android:id="@+id/button3" android:text="3" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonAdd" android:text="+" style="@style/CalculatorButton" />
+
+            <Button android:id="@+id/buttonClearAll" android:text="AC" style="@style/CalculatorButton"/>
+            <Button android:id="@+id/button0" android:text="0" style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonDecimal" android:text="." style="@style/CalculatorButton" />
+            <Button android:id="@+id/buttonEqual" android:text="=" style="@style/CalculatorButton" />
+
+
+        </GridLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
