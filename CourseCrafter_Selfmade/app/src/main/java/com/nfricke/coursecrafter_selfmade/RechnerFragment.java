@@ -51,7 +51,7 @@ public class RechnerFragment extends Fragment implements View.OnClickListener {
         }
 
         if ("0123456789.".contains(buttonText)) {
-            input.append(buttonText);
+            if (input.length() <= 10) input.append(buttonText);
         } else if ("+-*/%".contains(buttonText)) {
             processOperator(buttonText);
         } else if ("=".equals(buttonText)) {
