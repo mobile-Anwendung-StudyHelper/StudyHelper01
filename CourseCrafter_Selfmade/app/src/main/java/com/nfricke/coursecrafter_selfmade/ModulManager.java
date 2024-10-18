@@ -36,6 +36,22 @@ public class ModulManager extends ArrayList<Modul> {
         return result;
     }
 
+    public double durchschnitt(){
+        ModulManager ergebnis = new ModulManager();
+        for ( Modul s: this){
+            if (s.getNote() != 0.0 && s.getNote() != 5.0){
+                ergebnis.add(s);
+            }
+        }
+        double durchschnit = 0;
+        for ( Modul s: ergebnis){
+            durchschnit = durchschnit + s.getNote();
+        }
+        durchschnit = durchschnit / ergebnis.size();
+
+        return Math.round(durchschnit * 100.0) / 100.0;
+    }
+
     public boolean nameIstVorhanden(String name){
         for ( Modul s: this){
             if (s.getModulName().equals(name))
