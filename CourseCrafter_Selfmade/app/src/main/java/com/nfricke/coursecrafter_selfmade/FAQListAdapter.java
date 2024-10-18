@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.nfricke.coursecrafter_selfmade.FAQ;
-import com.nfricke.coursecrafter_selfmade.R;
-
 import java.util.List;
 
 public class FAQListAdapter extends ArrayAdapter<FAQ> {

@@ -19,6 +19,13 @@
             margin: 0 auto;
             padding: 20px;
         }
+        img { /* CSS-Regel für Bilder */
+            max-width: 100%;  /* Bild skaliert maximal auf die Breite des Bildschirms */
+            height: auto;     /* Höhe wird automatisch angepasst, um das Seitenverhältnis beizubehalten */
+            display: block;   /* Stellt sicher, dass das Bild die volle Breite einnimmt */
+            margin-left: auto; /* Zentriert das Bild horizontal */
+            margin-right: auto;/* Zentriert das Bild horizontal */
+
     </style>
 </head>
 <body>
@@ -27,6 +34,7 @@
     <p>
         Um dich für unseren Service anzumelden, folge bitte diesen einfachen Schritten:
     </p>
+    <img src="file:///android_asset/sample_picture.jpg" alt="Mein Bild">
     <ol>
         <li>Gehe auf unsere Webseite www.beispiel-website.de</li>
         <li>Klicke oben rechts auf den Button "Registrieren".</li>

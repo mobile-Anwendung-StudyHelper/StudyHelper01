@@ -28,8 +28,8 @@ public class FAQFragment extends Fragment {
 
         // Datenquelle initialisieren (Beispiel)
         faqList = new ArrayList<>();
-        faqList.add(new FAQ("#Allgemein", "Wie melde ich mich an?", "Klicke auf den 'Registrieren' Button...", "artikel_one.html"));
-        faqList.add(new FAQ("#Bezahlung", "Welche Zahlungsarten gibt es?", "Wir akzeptieren Kreditkarte, PayPal...","artikel_one.html"));
+        faqList.add(new FAQ("#Allgemein", "Wie melde ich mich an?", "Klicke auf den 'Registrieren' Button...", "sample_picture.jpg","Inhalt", ""));
+        faqList.add(new FAQ("#Bezahlung", "Welche Zahlungsarten gibt es?", "Wir akzeptieren Kreditkarte, PayPal...","artikel_one.html","", ""));
 
         // Adapter erstellen und setzen
         FAQListAdapter adapter = new FAQListAdapter(getContext(), faqList);
@@ -44,10 +44,7 @@ public class FAQFragment extends Fragment {
 
                 // Beispiel: Öffne ein neues Fragment mit den Details des FAQ
                 Bundle bundle = new Bundle();
-                bundle.putString("label", clickedFAQ.getLabel());
-                bundle.putString("title", clickedFAQ.getTitle());
-                bundle.putString("subtitle", clickedFAQ.getSubtitle());
-                bundle.putString("Link", clickedFAQ.getLink());
+                bundle.putSerializable("faq", clickedFAQ); // FAQ-Objekt übergeben
 
                 FAQDetailFragment detailFragment = new FAQDetailFragment();
                 detailFragment.setArguments(bundle);
