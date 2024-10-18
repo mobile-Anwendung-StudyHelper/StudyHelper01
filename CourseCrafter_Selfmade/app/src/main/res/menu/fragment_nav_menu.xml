@@ -2,13 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/faq"
-        android:title="@string/faq_fragment_title"
+        android:id="@+id/noten"
+        android:title="@string/noten_fragment_title"
         android:icon="@drawable/baseline_question_mark_24"/>
     <item
         android:id="@+id/rechner"
         android:title="@string/rechner_fragment_title"
         android:icon="@drawable/baseline_calculate_24"/>
+    <item
+        android:id="@+id/faq"
+        android:title="@string/faq_fragment_title"
+        android:icon="@drawable/baseline_question_mark_24"/>
     <item
         android:id="@+id/tictactoe"
         android:title="@string/tictacto_fragment_title"

@@ -52,12 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     appBarText.setText("StudyHelper -> " + getString(R.string.modullist_fragment_title));
                     break;
                 case R.id.nav:
-                    replaceFragment(new NavFragment());
+                    replaceFragment(new NavFragment(this));
                     appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
-                    break;
-                case R.id.faq:
-                    replaceFragment(new FAQFragment());
-                    appBarText.setText("StudyHelper -> " + getString(R.string.faq_fragment_title));
                     break;
             }
             return true;

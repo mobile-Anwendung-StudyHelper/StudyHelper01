@@ -18,6 +18,11 @@ public class NavFragment extends Fragment {
 
     private View view;
     private ListView listView;
+    private MainActivity parent;
+
+    public NavFragment(MainActivity p) {
+        this.parent = p;
+    }
 
     @Nullable
     @Override
@@ -27,13 +32,15 @@ public class NavFragment extends Fragment {
         listView = view.findViewById(R.id.navListView);
 
         final String[] options = {
-                getString(R.string.faq_fragment_title),
+                getString(R.string.noten_fragment_title),
                 getString(R.string.rechner_fragment_title),
+                getString(R.string.faq_fragment_title),
                 getString(R.string.tictacto_fragment_title)
         };
         final int[] icons = {
-                R.drawable.baseline_question_mark_24,
+                R.drawable.baseline_exposure_plus_1_24,
                 R.drawable.baseline_calculate_24,
+                R.drawable.baseline_question_mark_24,
                 R.drawable.game_adaptive_fore
         };
 
@@ -45,19 +52,24 @@ public class NavFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
+
                     case 0:
-                        ((MainActivity) requireActivity()).replaceFragment(new FAQFragment());
-                        ((MainActivity) requireActivity()).appBarText.setText("StudyHelper -> " + getString(R.string.faq_fragment_title));
+                        ((MainActivity) requireActivity()).replaceFragment(new NotenFragment());
+                        ((MainActivity) requireActivity()).appBarText.setText("StudyHelper -> " + getString(R.string.noten_fragment_title));
                         break;
                     case 1:
                         ((MainActivity) requireActivity()).replaceFragment(new RechnerFragment());
                         ((MainActivity) requireActivity()).appBarText.setText("StudyHelper -> " + getString(R.string.rechner_fragment_title));
-
                         break;
                     case 2:
+                        ((MainActivity) requireActivity()).replaceFragment(new FAQFragment());
+                        ((MainActivity) requireActivity()).appBarText.setText("StudyHelper -> " + getString(R.string.faq_fragment_title));
+                        break;
+                    case 3:
                         ((MainActivity) requireActivity()).replaceFragment(new TicTacToeFragment());
                         ((MainActivity) requireActivity()).appBarText.setText("StudyHelper -> " + getString(R.string.tictacto_fragment_title));
                         break;
+
                 }
             }
         });
