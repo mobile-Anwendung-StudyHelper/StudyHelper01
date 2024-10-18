@@ -12,27 +12,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="?android:attr/selectableItemBackground">
+        android:padding="16dp">
 
-        <!-- Module Name -->
-        <TextView
-            android:id="@+id/modullist_modul_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="Module Name" />
+            android:layout_height="wrap_content">
 
-        <!-- Professor Name -->
-        <TextView
-            android:id="@+id/modullist_prof_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            tools:text="Professor Name" />
+            <TextView
+                android:id="@+id/modullist_modul_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/modullist_belegt_button"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Module Name" />
 
-        <!-- Schedule Details Table -->
+            <TextView
+                android:id="@+id/modullist_prof_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/modullist_belegt_button"
+                app:layout_constraintTop_toBottomOf="@id/modullist_modul_name"
+                tools:text="Professor Name" />
+
+            <TextView
+                android:id="@+id/modullist_note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/modullist_belegt_button"
+                app:layout_constraintTop_toBottomOf="@id/modullist_prof_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Note: " />
+
+            <Button
+                android:id="@+id/modullist_belegt_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textSize="20sp"
+                android:padding="0dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/belegt_button"
+                app:layout_constraintStart_toEndOf="@id/modullist_modul_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

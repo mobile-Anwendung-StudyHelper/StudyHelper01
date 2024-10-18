@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pastell_rot">#C93C20</color>
+    <color name="pastell_grün">#49B675</color>
 </resources>

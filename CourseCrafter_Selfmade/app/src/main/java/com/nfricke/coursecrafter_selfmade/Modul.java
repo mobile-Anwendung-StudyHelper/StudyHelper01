@@ -9,11 +9,13 @@ public class Modul {
     private int[] tag = new int[anzahlVeranstaltungen];
     private int[] block = new int[anzahlVeranstaltungen];
     private String[] raum = new String[anzahlVeranstaltungen];
+    private boolean belegt;
+    private float note;
 
     public Modul() {
     }
 
-    public Modul(String[] sW, String [] sB, String n, String p, int[] t, int[] b, String[] r) {
+    public Modul(String[] sW, String [] sB, String n, String p, int[] t, int[] b, String[] r, boolean be, float no) {
         this.wochentage = sW;
         this.bloecke = sB;
         this.modulName = n;
@@ -21,6 +23,8 @@ public class Modul {
         this.tag = t;
         this.block = b;
         this.raum = r;
+        this.belegt = be;
+        this.note = no;
     }
 
     //------------------------------------------
@@ -30,34 +34,34 @@ public class Modul {
 
     public int getTag(int index) { return tag[index]; }
 
-    public String getTagString(int index) { if (tag[index] == 0) return "-"; else return wochentage[tag[index]]; }
+    public String getTagString(int index) { return wochentage[tag[index]]; }
 
     public int getBlock(int index) { return block[index]; }
 
-    public String getBlockString(int index) { if (block[index] == 0) return "-"; else return bloecke[block[index]]; }
+    public String getBlockString(int index) { return bloecke[block[index]]; }
 
-    public String getRaum(int index) {  if (raum[index].isEmpty()) return "-"; else return raum[index]; }
+    public String getRaum(int index) { return raum[index]; }
+
+    public boolean isBelegt() { return belegt; }
+
+    public float getNote() { return note; }
+
+    public String getNoteString() { return String.valueOf(note); }
 
     //------------------------------------------
-    public void setModulName(String modulName) {
-        this.modulName = modulName;
-    }
+    public void setModulName(String modulName) { this.modulName = modulName; }
 
-    public void setProfName(String profName) {
-        this.profName = profName;
-    }
+    public void setProfName(String profName) { this.profName = profName; }
 
-    public void setTag(int tag, int index) {
-        this.tag[index] = tag;
-    }
+    public void setTag(int tag, int index) { this.tag[index] = tag; }
 
-    public void setBlock(int block, int index) {
-        this.block[index] = block;
-    }
+    public void setBlock(int block, int index) { this.block[index] = block; }
 
-    public void setRaum(String raum, int index) {
-        this.raum[index] = raum;
-    }
+    public void setRaum(String raum, int index) { this.raum[index] = raum; }
+
+    public void setBelegt(boolean belegt) { this.belegt = belegt; }
+
+    public void setNote(float note) { this.note = note; }
 
     //------------------------------------------
     public static int getAnzahlVeranstaltungen() {
@@ -66,6 +70,8 @@ public class Modul {
     public void printTest() {
         System.out.println(this.getModulName());
         System.out.println(this.getProfName());
+        System.out.println(this.getNote());
+        System.out.println(this.isBelegt());
         for (int i = 0; i < anzahlVeranstaltungen; i++) {
             System.out.println("Tag" + i + ":   " + this.getTag(i));
             System.out.println("Block" + i + ": " + this.getBlock(i));

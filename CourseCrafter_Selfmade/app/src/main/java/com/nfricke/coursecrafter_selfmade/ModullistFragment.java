@@ -1,5 +1,6 @@
 package com.nfricke.coursecrafter_selfmade;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ public class ModullistFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_modullist, container, false);
@@ -42,7 +44,7 @@ public class ModullistFragment extends Fragment {
         // Use 'view' to find views inside the fragment
         modulListView = view.findViewById(R.id.listViewModul);
         // Create the adapter using the fragment's context or activity context
-        modulListAdapter = new ModulListAdapter(getActivity(), parent.modulManager);
+        modulListAdapter = new ModulListAdapter(getActivity(), parent.modulManager, parent.modulManagerDAO);
         // Set the adapter
         modulListView.setAdapter(modulListAdapter);
 
@@ -58,9 +60,7 @@ public class ModullistFragment extends Fragment {
         modulListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //parent.modulManager.remove(position);
                 showEditModuleDialog(position);
-                modulListAdapter.notifyDataSetChanged();
                 return true;
             }
         });
@@ -123,7 +123,7 @@ public class ModullistFragment extends Fragment {
                         }
 
                         // Add new Modul instance
-                        parent.modulManager.add(new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum));
+                        parent.modulManager.add(new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum, false, 0));
                         parent.modulManagerDAO.saveModulManager(parent.modulManager);
                         modulListAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), "Modul hinzugefügt", Toast.LENGTH_SHORT).show();
@@ -201,7 +201,7 @@ public class ModullistFragment extends Fragment {
                         }
 
                         // replace new Modul instance
-                        parent.modulManager.set(position, new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum));
+                        parent.modulManager.set(position, new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum, editModul.isBelegt(), editModul.getNote()));
                         parent.modulManagerDAO.saveModulManager(parent.modulManager);
                         modulListAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), "Modul gespeichert", Toast.LENGTH_SHORT).show();
