@@ -44,7 +44,7 @@ public class FAQDetailFragment extends Fragment {
         titleView.setText(faq.getTitle());
         subtitleView.setText(faq.getSubtitle());
         content1.setText(faq.getContent1());
-        content1.setText(faq.getContent2());
+        content2.setText(faq.getContent2());
 
 
 
