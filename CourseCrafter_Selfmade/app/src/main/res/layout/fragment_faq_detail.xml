@@ -42,23 +42,8 @@
                 android:text="TextView"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5sp"
-                android:paddingBottom="5sp"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <TextView
-                android:id="@+id/content1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5sp"
-                android:paddingBottom="5sp"
-                android:text="TextView" />
-            <TextView
-                android:id="@+id/content2"
+                android:id="@+id/markdown_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5sp"

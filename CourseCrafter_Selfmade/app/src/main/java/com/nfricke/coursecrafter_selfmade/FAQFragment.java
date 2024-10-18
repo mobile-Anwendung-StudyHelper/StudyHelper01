@@ -7,12 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import androidx.fragment.app.Fragment;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class FAQFragment extends Fragment {
 
@@ -25,11 +22,12 @@ public class FAQFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_f_a_q, container, false);
 
         listView = view.findViewById(R.id.faq_listView); // ID der ListView in fragment_f_a_q_xml
-
         // Datenquelle initialisieren (Beispiel)
         faqList = new ArrayList<>();
-        faqList.add(new FAQ("#Allgemein", "Wie melde ich mich an?", "Klicke auf den 'Registrieren' Button...", "sample_picture.jpg","Inhalt", ""));
-        faqList.add(new FAQ("#Bezahlung", "Welche Zahlungsarten gibt es?", "Wir akzeptieren Kreditkarte, PayPal...","artikel_one.html","", ""));
+        faqList.add(new FAQ("#Lernen", "Die Pomodoro-Technik", "Fokussiert arbeiten und mehr erreichen", "test.md"));
+        faqList.add(new FAQ("#Lernen", "Effektives Lernen", "Strategien und Techniken", "test2.md"));
+        faqList.add(new FAQ("#Zeitmanagement", "Zeitmanagement im Studium", "Tipps für mehr Effektivität", "test3.md"));
+        faqList.add(new FAQ("#Studizeit", "Tipps für ein erfolgreiches Studium", "Wie du dein Studium erfolgreich abschließen kannst", "test4.md"));
 
         // Adapter erstellen und setzen
         FAQListAdapter adapter = new FAQListAdapter(getContext(), faqList);

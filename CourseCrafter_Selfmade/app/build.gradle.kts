@@ -50,6 +50,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
+    implementation("io.noties.markwon:core:4.6.2")
+    implementation("io.noties.markwon:image:4.6.2")  //  Abhängigkeit für ImagesPlugin
+    //implementation("io.noties.markwon:image-asset:4.6.2")
     //implementation("androidx.cardview:cardview:1.0.0")
 }
