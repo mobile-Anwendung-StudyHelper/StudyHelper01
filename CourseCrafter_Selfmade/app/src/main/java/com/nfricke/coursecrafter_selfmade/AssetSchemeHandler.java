@@ -18,18 +18,18 @@ import io.noties.markwon.image.SchemeHandler;
 
 public class AssetSchemeHandler extends SchemeHandler {
 
-        private final Context context;
+    private final Context context;
+    public AssetSchemeHandler(Context context) {
+        this.context = context;
+    }
+    @NonNull
+    @Override
+    public Set<String> supportedSchemes() {
+        return Collections.singleton("asset");
+    }
 
-        public AssetSchemeHandler(Context context) {
-            this.context = context;
-        }
-        @NonNull
-        @Override
-        public Set<String> supportedSchemes() {
-            return Collections.singleton("asset");
-        }
-        @Nullable
-        @Override
+    @Nullable
+    @Override
     public ImageItem handle(@NonNull String raw, @NonNull Uri uri) {
         if ("asset".equals(uri.getScheme())) {
             String path = uri.getPath();

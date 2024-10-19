@@ -65,7 +65,7 @@ public class ModullistFragment extends Fragment {
             }
         });
 
-        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new SwipeToDeleteListener(modulListView, parent.modulManager, getActivity(), modulListAdapter, parent.modulManagerDAO));
+        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new ModullistSwipeToDeleteListener(modulListView, parent.modulManager, getActivity(), modulListAdapter, parent.modulManagerDAO));
         modulListView.setOnTouchListener((v, event) -> {
             gestureDetector.onTouchEvent(event);
             return false;

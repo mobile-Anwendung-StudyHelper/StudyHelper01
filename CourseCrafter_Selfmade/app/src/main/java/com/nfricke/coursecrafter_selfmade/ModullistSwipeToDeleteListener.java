@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
-public class SwipeToDeleteListener extends GestureDetector.SimpleOnGestureListener {
+public class ModullistSwipeToDeleteListener extends GestureDetector.SimpleOnGestureListener {
     private final ListView listView;
     private ModulManager modulManager;
     private FragmentActivity activity;
@@ -21,7 +21,7 @@ public class SwipeToDeleteListener extends GestureDetector.SimpleOnGestureListen
     private static final int SWIPE_THRESHOLD_VELOCITY = 100; // Minimum velocity in pixels/second
     private static final int SWIPE_MAX_OFF_PATH = 250; // Maximum perpendicular deviation in pixels
 
-    public SwipeToDeleteListener(ListView listView, ModulManager modulManager, FragmentActivity activity, ModulListAdapter modulAdapter, ModulManagerDAO modulManagerDAO) {
+    public ModullistSwipeToDeleteListener(ListView listView, ModulManager modulManager, FragmentActivity activity, ModulListAdapter modulAdapter, ModulManagerDAO modulManagerDAO) {
         this.listView = listView;
         this.modulAdapter = modulAdapter;
         this.activity = activity;
