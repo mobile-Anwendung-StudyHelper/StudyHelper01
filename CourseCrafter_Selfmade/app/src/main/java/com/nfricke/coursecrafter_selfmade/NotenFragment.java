@@ -18,16 +18,12 @@ import androidx.fragment.app.Fragment;
 
 public class NotenFragment extends Fragment {
 
-    private ModulManager modulManager;
-    private ModulManagerDAO modulManagerDAO;
     private NotenListAdapter notenListAdapter;
     private TextView durchschnittTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        modulManager = ((MainActivity) getActivity()).modulManager;
-        modulManagerDAO = ((MainActivity) getActivity()).modulManagerDAO;
     }
 
     @Override
@@ -35,11 +31,11 @@ public class NotenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_noten, container, false);
 
         ListView notesListView = view.findViewById(R.id.notesListView);
-        notenListAdapter = new NotenListAdapter(getContext(), modulManager);
+        notenListAdapter = new NotenListAdapter(getContext());
         notesListView.setAdapter(notenListAdapter);
 
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
-        durchschnittTextView. setText("Durchschnitt: " + modulManager.durchschnitt());
+        durchschnittTextView. setText("Durchschnitt: " + ((MainActivity) getActivity()).modulManager.durchschnitt());
 
         notesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -90,9 +86,9 @@ public class NotenFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         int notePosition = notenSpinner.getSelectedItemPosition();
                         selectedModule.setNote(noten[notePosition]);
-                        modulManagerDAO.saveModulManager(modulManager);
+                        ((MainActivity) getActivity()).modulManagerDAO.saveModulManager(((MainActivity) getActivity()).modulManager);
                         notenListAdapter.notifyDataSetInvalidated();
-                        durchschnittTextView. setText("Durchschnitt: " + modulManager.durchschnitt());
+                        durchschnittTextView. setText("Durchschnitt: " + ((MainActivity) getActivity()).modulManager.durchschnitt());
                         Toast.makeText(getActivity(), "Note angepasst", Toast.LENGTH_SHORT).show();
                     }
                 })

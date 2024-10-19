@@ -29,30 +29,30 @@ public class MainActivity extends AppCompatActivity {
 
         // Temp: Kann am Ende Gelöscht werden.
         ModulManager initialmodulManager = new ModulManager();
-        initialmodulManager.add(new Modul(wochentage, bloecke, "Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}, true, (float) 1.3));
-        initialmodulManager.add(new Modul(wochentage, bloecke, "Name2", "Prof2", new int[]{2,3,1}, new int[]{5,6,4}, new String[]{"W201","W202","W203"}, true, (float) 0));
-        initialmodulManager.add(new Modul(wochentage, bloecke, "Name3", "Prof3", new int[]{3,1,2}, new int[]{6,4,5}, new String[]{"W301","W302","W303"}, false, (float) 3.3));
-        initialmodulManager.add(new Modul(wochentage, bloecke, "Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}, true, (float) 0));
+        initialmodulManager.add(new Modul("Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}, true, (float) 1.3));
+        initialmodulManager.add(new Modul("Name2", "Prof2", new int[]{2,3,1}, new int[]{5,6,4}, new String[]{"W201","W202","W203"}, true, (float) 0));
+        initialmodulManager.add(new Modul("Name3", "Prof3", new int[]{3,1,2}, new int[]{6,4,5}, new String[]{"W301","W302","W303"}, false, (float) 3.3));
+        initialmodulManager.add(new Modul("Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}, true, (float) 0));
         modulManagerDAO.saveModulManager(initialmodulManager);
 
 
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
         modulManager.printTest();
         
-        replaceFragment(new ModulplanFragment(this));
+        replaceFragment(new ModulplanFragment());
         appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.modulplan:
-                    replaceFragment(new ModulplanFragment(this));
+                    replaceFragment(new ModulplanFragment());
                     appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
                     break;
                 case R.id.modullist:
-                    replaceFragment(new ModullistFragment(this));
+                    replaceFragment(new ModullistFragment());
                     appBarText.setText("StudyHelper -> " + getString(R.string.modullist_fragment_title));
                     break;
                 case R.id.nav:
-                    replaceFragment(new NavFragment(this));
+                    replaceFragment(new NavFragment());
                     appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
                     break;
             }

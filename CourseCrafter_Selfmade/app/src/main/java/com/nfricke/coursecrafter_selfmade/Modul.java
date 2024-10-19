@@ -2,8 +2,6 @@ package com.nfricke.coursecrafter_selfmade;
 
 public class Modul {
     private int anzahlVeranstaltungen = 3;
-    public String[] wochentage;
-    public String[] bloecke;
     private String modulName;
     private String profName;
     private int[] tag = new int[anzahlVeranstaltungen];
@@ -15,9 +13,7 @@ public class Modul {
     public Modul() {
     }
 
-    public Modul(String[] sW, String [] sB, String n, String p, int[] t, int[] b, String[] r, boolean be, float no) {
-        this.wochentage = sW;
-        this.bloecke = sB;
+    public Modul(String n, String p, int[] t, int[] b, String[] r, boolean be, float no) {
         this.modulName = n;
         this.profName = p;
         this.tag = t;
@@ -33,12 +29,8 @@ public class Modul {
     public String getProfName() { return profName; }
 
     public int getTag(int index) { return tag[index]; }
-
-    public String getTagString(int index) { return wochentage[tag[index]]; }
-
+    
     public int getBlock(int index) { return block[index]; }
-
-    public String getBlockString(int index) { return bloecke[block[index]]; }
 
     public String getRaum(int index) { return raum[index]; }
 

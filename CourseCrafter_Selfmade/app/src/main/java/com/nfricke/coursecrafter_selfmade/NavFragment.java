@@ -18,11 +18,6 @@ public class NavFragment extends Fragment {
 
     private View view;
     private ListView listView;
-    private MainActivity parent;
-
-    public NavFragment(MainActivity p) {
-        this.parent = p;
-    }
 
     @Nullable
     @Override

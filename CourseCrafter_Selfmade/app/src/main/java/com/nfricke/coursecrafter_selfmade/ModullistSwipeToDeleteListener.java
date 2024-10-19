@@ -11,22 +11,18 @@ import androidx.fragment.app.FragmentActivity;
 
 public class ModullistSwipeToDeleteListener extends GestureDetector.SimpleOnGestureListener {
     private final ListView listView;
-    private ModulManager modulManager;
     private FragmentActivity activity;
     private ModulListAdapter modulAdapter;
-    private ModulManagerDAO modulManagerDAO;
 
     // Swipe gesture thresholds
     private static final int SWIPE_MIN_DISTANCE = 100; // Minimum distance in pixels for a swipe
     private static final int SWIPE_THRESHOLD_VELOCITY = 100; // Minimum velocity in pixels/second
     private static final int SWIPE_MAX_OFF_PATH = 250; // Maximum perpendicular deviation in pixels
 
-    public ModullistSwipeToDeleteListener(ListView listView, ModulManager modulManager, FragmentActivity activity, ModulListAdapter modulAdapter, ModulManagerDAO modulManagerDAO) {
+    public ModullistSwipeToDeleteListener(ListView listView,FragmentActivity activity, ModulListAdapter modulAdapter) {
         this.listView = listView;
         this.modulAdapter = modulAdapter;
         this.activity = activity;
-        this.modulManager = modulManager;
-        this.modulManagerDAO = modulManagerDAO;
     }
 
     @Override
@@ -43,17 +39,17 @@ public class ModullistSwipeToDeleteListener extends GestureDetector.SimpleOnGest
         // Right to Left swipe
         if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
             final int position = listView.pointToPosition((int) e1.getX(), (int) e1.getY());
-            if (position >= 0 && position < modulManager.size()) {
+            if (position >= 0 && position < ((MainActivity)activity).modulManager.size()) {
                 // Show confirmation dialog
                 new AlertDialog.Builder(activity)
-                        .setTitle(modulManager.get(position).getModulName() + " wircklich löschen?")
+                        .setTitle(((MainActivity)activity).modulManager.get(position).getModulName() + " wircklich löschen?")
                         .setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // Remove the item from the data source
-                                modulManager.remove(position);
+                                ((MainActivity) activity).modulManager.remove(position);
                                 // Persist changes if necessary
-                                modulManagerDAO.saveModulManager(modulManager);
+                                ((MainActivity)activity).modulManagerDAO.saveModulManager(((MainActivity)activity).modulManager);
                                 // Notify the adapter of deletion
                                 modulAdapter.notifyDataSetChanged();
                                 Toast.makeText(activity, "Modul gelöscht", Toast.LENGTH_SHORT).show();

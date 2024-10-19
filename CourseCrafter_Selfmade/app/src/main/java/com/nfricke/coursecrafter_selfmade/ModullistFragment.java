@@ -21,15 +21,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ModullistFragment extends Fragment {
 
-    private MainActivity parent;
     private View view;
     private ModulListAdapter modulListAdapter;
     private ListView modulListView;
     private FloatingActionButton addModuleButton;
-
-    public ModullistFragment(MainActivity p) {
-        this.parent = p;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +39,7 @@ public class ModullistFragment extends Fragment {
         // Use 'view' to find views inside the fragment
         modulListView = view.findViewById(R.id.listViewModul);
         // Create the adapter using the fragment's context or activity context
-        modulListAdapter = new ModulListAdapter(getActivity(), parent.modulManager, parent.modulManagerDAO);
+        modulListAdapter = new ModulListAdapter(getActivity());
         // Set the adapter
         modulListView.setAdapter(modulListAdapter);
 
@@ -65,7 +60,7 @@ public class ModullistFragment extends Fragment {
             }
         });
 
-        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new ModullistSwipeToDeleteListener(modulListView, parent.modulManager, getActivity(), modulListAdapter, parent.modulManagerDAO));
+        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new ModullistSwipeToDeleteListener(modulListView, getActivity(), modulListAdapter));
         modulListView.setOnTouchListener((v, event) -> {
             gestureDetector.onTouchEvent(event);
             return false;
@@ -96,12 +91,12 @@ public class ModullistFragment extends Fragment {
         final Spinner blockSpinner3 = dialogView.findViewById(R.id.blockSpinnerInput3);
         final EditText raumInput3 = dialogView.findViewById(R.id.raumInput3);
 
-        ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, parent.wochentage);
+        ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).wochentage);
         tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tagSpinner1.setAdapter(tagAdapter);
         tagSpinner2.setAdapter(tagAdapter);
         tagSpinner3.setAdapter(tagAdapter);
-        ArrayAdapter<String> blockAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, parent.bloecke);
+        ArrayAdapter<String> blockAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).bloecke);
         blockAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         blockSpinner1.setAdapter(blockAdapter);
         blockSpinner2.setAdapter(blockAdapter);
@@ -123,8 +118,8 @@ public class ModullistFragment extends Fragment {
                         }
 
                         // Add new Modul instance
-                        parent.modulManager.add(new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum, false, 0));
-                        parent.modulManagerDAO.saveModulManager(parent.modulManager);
+                        ((MainActivity)getActivity()).modulManager.add(new Modul(modulName, profName, tag, block, raum, false, 0));
+                        ((MainActivity)getActivity()).modulManagerDAO.saveModulManager(((MainActivity)getActivity()).modulManager);
                         modulListAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), "Modul hinzugefügt", Toast.LENGTH_SHORT).show();
                     }
@@ -161,18 +156,18 @@ public class ModullistFragment extends Fragment {
         final Spinner blockSpinner3 = dialogView.findViewById(R.id.blockSpinnerInput3);
         final EditText raumInput3 = dialogView.findViewById(R.id.raumInput3);
 
-        ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, parent.wochentage);
+        ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).wochentage);
         tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tagSpinner1.setAdapter(tagAdapter);
         tagSpinner2.setAdapter(tagAdapter);
         tagSpinner3.setAdapter(tagAdapter);
-        ArrayAdapter<String> blockAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, parent.bloecke);
+        ArrayAdapter<String> blockAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).bloecke);
         blockAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         blockSpinner1.setAdapter(blockAdapter);
         blockSpinner2.setAdapter(blockAdapter);
         blockSpinner3.setAdapter(blockAdapter);
 
-        Modul editModul = parent.modulManager.get(position);
+        Modul editModul = ((MainActivity)getActivity()).modulManager.get(position);
         modulNameInput.setText(editModul.getModulName());
         profNameInput.setText(editModul.getProfName());
         tagSpinner1.setSelection(editModul.getTag(0));
@@ -201,8 +196,8 @@ public class ModullistFragment extends Fragment {
                         }
 
                         // replace new Modul instance
-                        parent.modulManager.set(position, new Modul(parent.wochentage, parent.bloecke, modulName, profName, tag, block, raum, editModul.isBelegt(), editModul.getNote()));
-                        parent.modulManagerDAO.saveModulManager(parent.modulManager);
+                        ((MainActivity)getActivity()).modulManager.set(position, new Modul(modulName, profName, tag, block, raum, editModul.isBelegt(), editModul.getNote()));
+                        ((MainActivity)getActivity()).modulManagerDAO.saveModulManager(((MainActivity)getActivity()).modulManager);
                         modulListAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), "Modul gespeichert", Toast.LENGTH_SHORT).show();
                     }

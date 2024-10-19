@@ -14,18 +14,12 @@ import java.util.Calendar;
 
 public class ModulplanFragment extends Fragment {
 
-    private MainActivity parent;
     private int currentDayIndex = 1;
 
     private TextView currentDayTextView;
     private TextView moduleScheduleTextView;
     private Button previousDayButton;
     private Button nextDayButton;
-
-
-    public ModulplanFragment (MainActivity p){
-        this.parent = p;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,27 +74,27 @@ public class ModulplanFragment extends Fragment {
 
     private void navigateDay(boolean forward) {
         if (forward) {
-            currentDayIndex = ((currentDayIndex) % (parent.wochentage.length-1))+1;
+            currentDayIndex = ((currentDayIndex) % (((MainActivity)getActivity()).wochentage.length-1))+1;
         } else {
-            currentDayIndex = ((currentDayIndex - 2 + (parent.wochentage.length-1)) % (parent.wochentage.length-1))+1;
+            currentDayIndex = ((currentDayIndex - 2 + (((MainActivity)getActivity()).wochentage.length-1)) % (((MainActivity)getActivity()).wochentage.length-1))+1;
         }
         updateDayView();
     }
 
     private void updateDayView() {
-        currentDayTextView.setText(parent.wochentage[currentDayIndex]);
+        currentDayTextView.setText(((MainActivity)getActivity()).wochentage[currentDayIndex]);
         displayModulesForCurrentDay();
     }
 
     private void displayModulesForCurrentDay() {
         StringBuilder scheduleBuilder = new StringBuilder();
 
-        for (int block = 1; block < parent.bloecke.length; block++) {
+        for (int block = 1; block < ((MainActivity)getActivity()).bloecke.length; block++) {
             // Header for the block time
-            scheduleBuilder.append(parent.bloecke[block]).append(":\n");
+            scheduleBuilder.append(((MainActivity)getActivity()).bloecke[block]).append(":\n");
 
             // Fetch modules for the current day and block
-            String[][] modules = parent.modulManager.getByTagBlock(currentDayIndex, block);
+            String[][] modules = ((MainActivity)getActivity()).modulManager.getByTagBlock(currentDayIndex, block);
 
             if (modules.length == 0) {
                 scheduleBuilder.append("  Keine Veranstaltungen\n");

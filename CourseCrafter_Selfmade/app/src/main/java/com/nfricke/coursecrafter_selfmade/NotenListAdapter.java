@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 public class NotenListAdapter extends ArrayAdapter<Modul> {
 
-    public NotenListAdapter(@NonNull Context context, ModulManager modulManager) {
-        super(context, 0, modulManager);
+    public NotenListAdapter(@NonNull Context context) {
+        super(context, 0, ((MainActivity) context).modulManager);
     }
 
     @NonNull
