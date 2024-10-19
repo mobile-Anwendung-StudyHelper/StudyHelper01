@@ -60,6 +60,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment currentFragment = fragmentManager.findFragmentById(R.id.frameLayout);
+
+        if (currentFragment instanceof NotenFragment || currentFragment instanceof RechnerFragment ||
+                currentFragment instanceof FAQFragment || currentFragment instanceof TicTacToeFragment) {
+            replaceFragment(new NavFragment());
+            appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
+        } else if (currentFragment instanceof NavFragment || currentFragment instanceof ModullistFragment) {
+            replaceFragment(new ModulplanFragment());
+            appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
+            binding.bottomNavigationView.setSelectedItemId(R.id.modulplan);
+        } else if (currentFragment instanceof FAQDetailFragment) {
+            replaceFragment(new FAQFragment());
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
