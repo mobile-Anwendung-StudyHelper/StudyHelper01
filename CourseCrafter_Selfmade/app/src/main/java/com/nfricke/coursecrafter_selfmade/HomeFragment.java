@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -31,8 +35,7 @@ public class HomeFragment extends Fragment {
         TextView homeNoteText = view.findViewById(R.id.homeNoteText);
 
         int todayIndex = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
-        StringBuilder modulesToday = new StringBuilder();
-
+        /*StringBuilder modulesToday = new StringBuilder();
         for (Modul modul : modulManager) {
             for (int n = 0; n < Modul.getAnzahlVeranstaltungen(); n++) {
                 if (modul.getTag(n) == todayIndex && modul.isBelegt()) {
@@ -45,7 +48,32 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
+        homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : "Heute keine Module");*/
+
+        List<ModulWithBlock> todayModulesList = new ArrayList<>();
+        for (Modul modul : modulManager) {
+            for (int n = 0; n < Modul.getAnzahlVeranstaltungen(); n++) {
+                if (modul.getTag(n) == todayIndex && modul.isBelegt()) {
+                    todayModulesList.add(new ModulWithBlock(modul, modul.getBlock(n), n));
+                }
+            }
+        }
+        Collections.sort(todayModulesList, Comparator.comparingInt(ModulWithBlock::getBlockIndex));
+        StringBuilder modulesToday = new StringBuilder();
+        for (ModulWithBlock m : todayModulesList) {
+            Modul modul = m.getModul();
+            int n = m.getModulIndex();
+            modulesToday.append(modul.getModulName());
+            if (m.getBlockIndex() > 0 && m.getBlockIndex() < bloecke.length) {
+                modulesToday.append(" - ");
+                modulesToday.append(bloecke[m.getBlockIndex()].contains("-") ? bloecke[m.getBlockIndex()].substring(0, bloecke[m.getBlockIndex()].indexOf('-')) : bloecke[m.getBlockIndex()]);
+            }
+            if (!modul.getRaum(n).isEmpty()) modulesToday.append(" @ ").append(modul.getRaum(n));
+            modulesToday.append("\n");
+        }
         homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : "Heute keine Module");
+
+        //---
 
         homeProgressBar.setProgress((int) todoManager.getAnzahlProzent(true));
         homeProgressText.setText((int) todoManager.getAnzahlProzent(true) + "% der Aufgaben erledigt (" + todoManager.getAnzahl(true) + "/" + todoManager.getAnzahl() + ")");
@@ -55,4 +83,30 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+
+    private static class ModulWithBlock {
+        private final Modul modul;
+        private final int blockIndex;
+        private final int modulIndex;
+
+        public ModulWithBlock(Modul modul, int blockIndex, int modulIndex) {
+            this.modul = modul;
+            this.blockIndex = blockIndex;
+            this.modulIndex = modulIndex;
+        }
+
+        public Modul getModul() {
+            return modul;
+        }
+
+        public int getBlockIndex() {
+            return blockIndex;
+        }
+
+        public int getModulIndex() {
+            return modulIndex;
+        }
+    }
+
 }
