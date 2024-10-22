@@ -1,10 +1,10 @@
 package com.nfricke.coursecrafter_selfmade;
 
-import static android.provider.Settings.System.DATE_FORMAT;
-
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 
 public class TodoFragment extends Fragment {
 
@@ -30,6 +27,7 @@ public class TodoFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
@@ -50,6 +48,12 @@ public class TodoFragment extends Fragment {
             }
         });
 
+        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new TodolistSwipeToDeleteListener(todoListView, getActivity(), todoListAdapter));
+        todoListView.setOnTouchListener((v, event) -> {
+            gestureDetector.onTouchEvent(event);
+            return false;
+        });
+
         return view;
     }
 
@@ -58,12 +62,10 @@ public class TodoFragment extends Fragment {
         View dialogView = inflater.inflate(R.layout.todo_dialog_add_edit, null);
 
         final EditText todoNameInput = dialogView.findViewById(R.id.todoNameInput);
-        final EditText todoDateInput = dialogView.findViewById(R.id.todoDateInput);
 
         Todo selectedTodo = ((MainActivity)getActivity()).todoManager.get(position);
 
         todoNameInput.setText(selectedTodo.getName());
-        todoDateInput.setText(selectedTodo.getFaelligkeitsdatumString());
 
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -73,20 +75,14 @@ public class TodoFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String todoName = todoNameInput.getText().toString();
-                        String dateStr = todoDateInput.getText().toString();
-                        if (todoName.isEmpty() || dateStr.isEmpty()) {
+                        if (todoName.isEmpty()) {
                             Toast.makeText(getActivity(), "Todo darf nicht leer sein", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        try {
-                            LocalDate dueDate = LocalDate.parse(dateStr, DATE_FORMAT);
-                            selectedTodo.setName(todoName);
-                            selectedTodo.setFaelligkeitsdatum(dueDate.atStartOfDay());
-                            todoListAdapter.notifyDataSetChanged();
-                            Toast.makeText(getActivity(), "Todo updated", Toast.LENGTH_SHORT).show();
-                        } catch (DateTimeParseException e) {
-                            Toast.makeText(getActivity(), "Invalid date format. Please use dd.MM.yyyy", Toast.LENGTH_SHORT).show();
-                        }
+                        ((MainActivity)getActivity()).todoManager.set(position, new Todo(todoName,selectedTodo.isErledigt()));
+                        ((MainActivity)getActivity()).todoManagerDAO.saveTodoManager(((MainActivity)getActivity()).todoManager);
+                        todoListAdapter.notifyDataSetChanged();
+                        Toast.makeText(getActivity(), "Todo gespeichert", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {
@@ -104,7 +100,6 @@ public class TodoFragment extends Fragment {
         View dialogView = inflater.inflate(R.layout.todo_dialog_add_edit, null);
 
         final EditText todoNameInput = dialogView.findViewById(R.id.todoNameInput);
-        final EditText todoDateInput = dialogView.findViewById(R.id.todoDateInput);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView)
@@ -113,19 +108,14 @@ public class TodoFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String todoName = todoNameInput.getText().toString();
-                        String dateStr = todoDateInput.getText().toString();
                         if (todoName.isEmpty()) {
-                            Toast.makeText(getActivity(), "Todo name cannot be empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Todo darf nicht leer sein", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        try {
-                            LocalDate dueDate = LocalDate.parse(dateStr, DATE_FORMAT);
-                            ((MainActivity)getActivity()).todoManager.add(new Todo(todoName, dueDate.atStartOfDay(), false));
-                            todoListAdapter.notifyDataSetChanged();
-                            Toast.makeText(getActivity(), "Todo gespeichert", Toast.LENGTH_SHORT).show();
-                        } catch (DateTimeParseException e) {
-                            Toast.makeText(getActivity(), "Invalid date format. Please use dd.MM.yyyy", Toast.LENGTH_SHORT).show();
-                        }
+                        ((MainActivity)getActivity()).todoManager.add(new Todo(todoName, false));
+                        ((MainActivity)getActivity()).todoManagerDAO.saveTodoManager(((MainActivity)getActivity()).todoManager);
+                        todoListAdapter.notifyDataSetChanged();
+                        Toast.makeText(getActivity(), "Todo gespeichert", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {

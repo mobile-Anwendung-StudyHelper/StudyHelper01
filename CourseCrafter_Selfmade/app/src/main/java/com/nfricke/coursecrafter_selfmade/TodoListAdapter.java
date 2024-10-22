@@ -28,16 +28,14 @@ public class TodoListAdapter extends ArrayAdapter<Todo> {
         Todo todo = getItem(position);
 
         TextView todoName = view.findViewById(R.id.todoName);
-        TextView todoDate = view.findViewById(R.id.todoDate);
         CheckBox todoDoneCheckbox = view.findViewById(R.id.todoDoneCheckbox);
 
         todoName.setText(todo.getName());
-        todoDate.setText(todo.getFaelligkeitsdatumString());
         todoDoneCheckbox.setChecked(todo.isErledigt());
 
         todoDoneCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             todo.setErledigt(isChecked);
-            // potentially save changes or refresh UI
+            ((MainActivity)getContext()).todoManagerDAO.saveTodoManager(((MainActivity)getContext()).todoManager);
         });
 
         return view;

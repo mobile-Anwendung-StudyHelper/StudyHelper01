@@ -29,26 +29,6 @@
         android:textSize="16sp"
         android:layout_gravity="center_vertical"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical"
-        android:gravity="end">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fälligkeit"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/todoDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:gravity="end"/>
-    </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

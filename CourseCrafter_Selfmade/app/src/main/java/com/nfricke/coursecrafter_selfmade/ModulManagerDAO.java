@@ -24,15 +24,6 @@ public class ModulManagerDAO {
         editor.apply();
     }
 
-    public ModulManager readModulManager() {
-        ModulManager modulManager = new ModulManager();
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString(sharedPreferencesString,null);
-        Type type = new TypeToken<ModulManager>(){}.getType();
-        modulManager = gson.fromJson(json,type);
-        return modulManager;
-    }
-
     public void readModulManager(ModulManager modulManager) {
         Gson gson = new Gson();
         String json = sharedPreferences.getString(sharedPreferencesString,null);

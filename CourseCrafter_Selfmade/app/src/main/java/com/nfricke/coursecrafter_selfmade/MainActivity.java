@@ -40,35 +40,33 @@ public class MainActivity extends AppCompatActivity {
         initialmodulManager.add(new Modul("Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}, true, (float) 0));
         modulManagerDAO.saveModulManager(initialmodulManager);
 
+        // Temp: Kann am Ende Gelöscht werden.
         TodoManager initialtodoManager = new TodoManager();
-        initialtodoManager.add(new Todo("Aufgabe 1", LocalDateTime.of(1999, 7, 16, 0, 0), false));
-        initialtodoManager.add(new Todo("Aufgabe 2", LocalDateTime.of(2025, 7, 16, 0, 0), false));
-        initialtodoManager.add(new Todo("Aufgabe 3", LocalDateTime.of(2024, 12, 24, 0, 0), true));
-        initialtodoManager.add(new Todo("Aufgabe 4", LocalDateTime.of(2025, 1, 1, 0, 0), false));
+        initialtodoManager.add(new Todo("Aufgabe 1", false));
+        initialtodoManager.add(new Todo("Aufgabe 2", false));
+        initialtodoManager.add(new Todo("Aufgabe 3", true));
+        initialtodoManager.add(new Todo("Aufgabe 4", false));
         todoManagerDAO.saveTodoManager(initialtodoManager);
 
-        todoManager = initialtodoManager;
-        //todoManager = todoManagerDAO.readTodoManager();
 
-        //todoManagerDAO.readTodoManager(todoManager = new TodoManager());
+        todoManagerDAO.readTodoManager(todoManager = new TodoManager());
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
-        //modulManager.printTest();
-        
+
         replaceFragment(new ModulplanFragment());
-        appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
+        appBarText.setText(getString(R.string.modulplan_fragment_title));
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.modulplan:
                     replaceFragment(new ModulplanFragment());
-                    appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
+                    appBarText.setText(getString(R.string.modulplan_fragment_title));
                     break;
                 case R.id.modullist:
                     replaceFragment(new ModullistFragment());
-                    appBarText.setText("StudyHelper -> " + getString(R.string.modullist_fragment_title));
+                    appBarText.setText(getString(R.string.modullist_fragment_title));
                     break;
                 case R.id.nav:
                     replaceFragment(new NavFragment());
-                    appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
+                    appBarText.setText(getString(R.string.nav_fragment_title));
                     break;
             }
             return true;
@@ -83,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
         if (currentFragment instanceof NotenFragment || currentFragment instanceof RechnerFragment || currentFragment instanceof TodoFragment ||
                 currentFragment instanceof FAQFragment || currentFragment instanceof TicTacToeFragment) {
             replaceFragment(new NavFragment());
-            appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
+            appBarText.setText(getString(R.string.nav_fragment_title));
         } else if (currentFragment instanceof NavFragment || currentFragment instanceof ModullistFragment) {
             replaceFragment(new ModulplanFragment());
-            appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
+            appBarText.setText(getString(R.string.modulplan_fragment_title));
             binding.bottomNavigationView.setSelectedItemId(R.id.modulplan);
         } else if (currentFragment instanceof FAQDetailFragment) {
             replaceFragment(new FAQFragment());
