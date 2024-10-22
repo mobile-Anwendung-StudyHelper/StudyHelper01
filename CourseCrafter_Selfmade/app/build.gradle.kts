@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.filament.android)
     implementation(libs.gridlayout)
     implementation(libs.cardview)
+    implementation(libs.google.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
