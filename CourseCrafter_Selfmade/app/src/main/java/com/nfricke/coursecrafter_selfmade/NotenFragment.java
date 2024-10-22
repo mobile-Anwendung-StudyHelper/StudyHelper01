@@ -35,7 +35,7 @@ public class NotenFragment extends Fragment {
         notesListView.setAdapter(notenListAdapter);
 
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
-        durchschnittTextView. setText("Durchschnitt: " + ((MainActivity) getActivity()).modulManager.durchschnitt());
+        durchschnittTextView. setText((((MainActivity) getActivity()).modulManager.durchschnitt() > 0 ? "Durchschnitt: " + ((MainActivity) getActivity()).modulManager.durchschnitt() : "Keine Noten"));
 
         notesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

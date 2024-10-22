@@ -2,14 +2,11 @@ package com.nfricke.coursecrafter_selfmade;
 
 import android.os.Bundle;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.nfricke.coursecrafter_selfmade.databinding.ActivityMainBinding;
-
-import java.time.LocalDateTime;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         todoManagerDAO.readTodoManager(todoManager = new TodoManager());
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
 
-        replaceFragment(new ModulplanFragment());
-        appBarText.setText(getString(R.string.modulplan_fragment_title));
+        replaceFragment(new HomeFragment());
+        appBarText.setText(getString(R.string.home_fragment_title));
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.modulplan:
@@ -67,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav:
                     replaceFragment(new NavFragment());
                     appBarText.setText(getString(R.string.nav_fragment_title));
+                    break;
+                case R.id.home:
+                    replaceFragment(new HomeFragment());
+                    appBarText.setText(getString(R.string.home_fragment_title));
                     break;
             }
             return true;
@@ -82,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 currentFragment instanceof FAQFragment || currentFragment instanceof TicTacToeFragment) {
             replaceFragment(new NavFragment());
             appBarText.setText(getString(R.string.nav_fragment_title));
-        } else if (currentFragment instanceof NavFragment || currentFragment instanceof ModullistFragment) {
-            replaceFragment(new ModulplanFragment());
-            appBarText.setText(getString(R.string.modulplan_fragment_title));
-            binding.bottomNavigationView.setSelectedItemId(R.id.modulplan);
+        } else if (currentFragment instanceof NavFragment || currentFragment instanceof ModullistFragment || currentFragment instanceof ModulplanFragment) {
+            replaceFragment(new HomeFragment());
+            appBarText.setText(getString(R.string.home_fragment_title));
+            binding.bottomNavigationView.setSelectedItemId(R.id.home);
         } else if (currentFragment instanceof FAQDetailFragment) {
             replaceFragment(new FAQFragment());
         } else {

@@ -10,5 +10,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="noten_fragment_title">Notenübersicht</string>
     <string name="todo_fragment_title">Todo</string>
+    <string name="home_fragment_title">Home</string>
 
 </resources>
