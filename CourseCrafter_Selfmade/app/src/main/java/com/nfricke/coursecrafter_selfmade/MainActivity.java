@@ -9,11 +9,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.nfricke.coursecrafter_selfmade.databinding.ActivityMainBinding;
 
+import java.time.LocalDateTime;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     public ModulManager modulManager;
     public ModulManagerDAO modulManagerDAO;
+    public TodoManager todoManager;
+    public TodoManagerDAO todoManagerDAO;
     public TextView appBarText;
     public String[] wochentage = new String[]{"<auswahl>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
     public String[] bloecke = new String[]{"<auswahl>","8:15-9:45","10:15-11:45","12:15-13:45","14:15-15:45","16:00-17:30","17:45-19:15"};
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         appBarText = findViewById(R.id.appBarText);
         modulManagerDAO = new ModulManagerDAO(this);
+        todoManagerDAO = new TodoManagerDAO(this);
 
 
         // Temp: Kann am Ende Gelöscht werden.
@@ -35,9 +40,19 @@ public class MainActivity extends AppCompatActivity {
         initialmodulManager.add(new Modul("Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}, true, (float) 0));
         modulManagerDAO.saveModulManager(initialmodulManager);
 
+        TodoManager initialtodoManager = new TodoManager();
+        initialtodoManager.add(new Todo("Aufgabe 1", LocalDateTime.of(1999, 7, 16, 0, 0), false));
+        initialtodoManager.add(new Todo("Aufgabe 2", LocalDateTime.of(2025, 7, 16, 0, 0), false));
+        initialtodoManager.add(new Todo("Aufgabe 3", LocalDateTime.of(2024, 12, 24, 0, 0), true));
+        initialtodoManager.add(new Todo("Aufgabe 4", LocalDateTime.of(2025, 1, 1, 0, 0), false));
+        todoManagerDAO.saveTodoManager(initialtodoManager);
 
+        todoManager = initialtodoManager;
+        //todoManager = todoManagerDAO.readTodoManager();
+
+        //todoManagerDAO.readTodoManager(todoManager = new TodoManager());
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
-        modulManager.printTest();
+        //modulManager.printTest();
         
         replaceFragment(new ModulplanFragment());
         appBarText.setText("StudyHelper -> " + getString(R.string.modulplan_fragment_title));
@@ -65,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.frameLayout);
 
-        if (currentFragment instanceof NotenFragment || currentFragment instanceof RechnerFragment ||
+        if (currentFragment instanceof NotenFragment || currentFragment instanceof RechnerFragment || currentFragment instanceof TodoFragment ||
                 currentFragment instanceof FAQFragment || currentFragment instanceof TicTacToeFragment) {
             replaceFragment(new NavFragment());
             appBarText.setText("StudyHelper -> " + getString(R.string.nav_fragment_title));
