@@ -40,11 +40,17 @@ public class TodoFragment extends Fragment {
 
         addTodoButton.setOnClickListener(v -> showAddTodoDialog());
         
-        todoListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        /*todoListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 showEditTodoDialog(position);
                 return true;
+            }
+        });*/
+        todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                showEditTodoDialog(position);
             }
         });
 

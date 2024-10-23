@@ -10,7 +10,7 @@ import com.nfricke.coursecrafter_selfmade.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    public ActivityMainBinding binding;
     public ModulManager modulManager;
     public ModulManagerDAO modulManagerDAO;
     public TodoManager todoManager;

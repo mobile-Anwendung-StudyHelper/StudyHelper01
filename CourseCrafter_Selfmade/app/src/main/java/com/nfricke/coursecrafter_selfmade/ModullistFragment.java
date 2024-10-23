@@ -52,11 +52,17 @@ public class ModullistFragment extends Fragment {
             }
         });
 
-        modulListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        /*modulListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 showEditModuleDialog(position);
                 return true;
+            }
+        });*/
+        modulListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                showEditModuleDialog(position);
             }
         });
 

@@ -1,6 +1,8 @@
 package com.nfricke.coursecrafter_selfmade;
 
 import android.os.Bundle;
+
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,34 @@ public class HomeFragment extends Fragment {
         ProgressBar homeProgressBar = view.findViewById(R.id.homeProgressBar);
         TextView homeProgressText = view.findViewById(R.id.homeProgressText);
         TextView homeNoteText = view.findViewById(R.id.homeNoteText);
+
+        CardView homeModulCard = view.findViewById(R.id.homemodulcard);
+        CardView homeTodoCard = view.findViewById(R.id.hometodocard);
+        CardView homeAverageCard = view.findViewById(R.id.homeaverageCard);
+
+        homeModulCard.setOnClickListener(v -> {
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).replaceFragment(new ModulplanFragment());
+                ((MainActivity) getActivity()).appBarText.setText(getString(R.string.modulplan_fragment_title));
+                ((MainActivity) getActivity()).binding.bottomNavigationView.setSelectedItemId(R.id.modulplan);
+            }
+        });
+
+        homeTodoCard.setOnClickListener(v -> {
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).binding.bottomNavigationView.setSelectedItemId(R.id.nav);
+                ((MainActivity) getActivity()).replaceFragment(new TodoFragment());
+                ((MainActivity) getActivity()).appBarText.setText(getString(R.string.todo_fragment_title));
+            }
+        });
+
+        homeAverageCard.setOnClickListener(v -> {
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).binding.bottomNavigationView.setSelectedItemId(R.id.nav);
+                ((MainActivity) getActivity()).replaceFragment(new NotenFragment());
+                ((MainActivity) getActivity()).appBarText.setText(getString(R.string.noten_fragment_title));
+            }
+        });
 
         int todayIndex = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
         /*StringBuilder modulesToday = new StringBuilder();
