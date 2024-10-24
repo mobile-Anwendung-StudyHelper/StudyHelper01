@@ -30,20 +30,22 @@ public class NotenFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_noten, container, false);
-
+        TextView notenTitel = view.findViewById(R.id.notesTitle);
+        TextView notenDurchschnitt = view.findViewById((R.id.noten_durchschnitt_Text));
         ListView notesListView = view.findViewById(R.id.notesListView);
         notenListAdapter = new NotenListAdapter(getContext());
         notesListView.setAdapter(notenListAdapter);
-
+        notenTitel.setText(getString(R.string.notenTitel));
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
-        durchschnittTextView. setText((((MainActivity) getActivity()).modulManager.durchschnitt() > 0 ? getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt() : getString(R.string.no_grade)));
-
-        notesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        durchschnittTextView.setText(getString(R.string.durchschnitt)+":");
+        double note;
+        note = ((MainActivity) getActivity()).modulManager.durchschnitt();
+        notenDurchschnitt.setText((note > 0) ? String.valueOf(note) : getString(R.string.no_grade));
+        notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Modul selectedModule = (Modul) adapterView.getItemAtPosition(position);
                 showEditGradeDialog(selectedModule);
-                return true;
             }
         });
 
@@ -54,10 +56,11 @@ public class NotenFragment extends Fragment {
         // Inflate the dialog view with your custom form
         LayoutInflater inflaterAddDialog = LayoutInflater.from(getActivity());
         View dialogView = inflaterAddDialog.inflate(R.layout.noten_dialog_edit, null);
-
+        TextView gradeText = dialogView.findViewById(R.id.gradeText);
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView);
+        gradeText.setText(getString(R.string.grade));
 
         final Spinner notenSpinner = dialogView.findViewById(R.id.noten_spinner);
 
@@ -90,7 +93,7 @@ public class NotenFragment extends Fragment {
                         selectedModule.setNote(noten[notePosition]);
                         ((MainActivity) getActivity()).modulManagerDAO.saveModulManager(((MainActivity) getActivity()).modulManager);
                         notenListAdapter.notifyDataSetInvalidated();
-                        durchschnittTextView. setText(getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt());
+                        durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt());
                         Toast.makeText(getActivity(), getString(R.string.edit_grade), Toast.LENGTH_SHORT).show();
                     }
                 })

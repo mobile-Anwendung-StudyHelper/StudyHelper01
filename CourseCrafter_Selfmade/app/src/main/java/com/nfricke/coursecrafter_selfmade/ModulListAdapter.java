@@ -57,9 +57,14 @@ public class ModulListAdapter extends ArrayAdapter<Modul>{
         TextView textView3 = currentItemView.findViewById(R.id.modullist_note);
         if (modul.getNote() == 0) textView3.setText(getContext().getString(R.string.grade)+": -"); else textView3.setText(getContext().getString(R.string.grade)+": " + modul.getNoteString());
         //TextView v_one = convertView.findViewById(R.id.Veranstaltung_one);
-
+        TextView textday = currentItemView.findViewById(R.id.modullist_dayTitle);
+        TextView textBlock = currentItemView.findViewById(R.id.modullist_blockTitle);
+        TextView textRoom = currentItemView.findViewById(R.id.modullist_roomTitle);
         TextView textView11 = currentItemView.findViewById(R.id.modullist_tag_1);
 
+        textday.setText(getContext().getString(R.string.day));
+        textBlock.setText(getContext().getString(R.string.block));
+        textRoom.setText(getContext().getString(R.string.room));
         if (modul.getTag(0) == 0) textView11.setText("-"); else textView11.setText(((MainActivity)getContext()).wochentage[modul.getTag(0)]);
         TextView textView12 = currentItemView.findViewById(R.id.modullist_block_1);
         if (modul.getBlock(0) == 0) textView12.setText("-"); else textView12.setText(((MainActivity)getContext()).bloecke[modul.getBlock(0)]);

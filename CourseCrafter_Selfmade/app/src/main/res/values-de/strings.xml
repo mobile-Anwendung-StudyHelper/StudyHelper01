@@ -58,4 +58,8 @@
     <string name="homeTodoTitle">Erledigte ToDos</string>
     <string name="veranstaltung">Veranstaltung</string>
     <string name="day">Tag</string>
+    <string name="notenTitel">Notenübersicht</string>
+    <string name="block">Block</string>
+    <string name="modulname">Modulname</string>
+    <string name="prof">Dozent\\\\in</string>
 </resources>

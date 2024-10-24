@@ -45,7 +45,7 @@
     <string name="aufgabe">Task</string>
     <string name="del_todo">ToDo deleted</string>
     <string name="player">Player</string>
-    <string name="new_game">new game</string>
+    <string name="new_game">New game</string>
     <string name="unentschieden">draw</string>
     <string name="win">won</string>
     <string name="f_veranstaltung">no events</string>
@@ -54,8 +54,12 @@
     <string name="todo_edit">Todo edit</string>
     <string name="todo_save">Todo saved</string>
     <string name="todo_error">Todo cannot be empty</string>
-    <string name="homeGradeTitle">avarage grade</string>
-    <string name="homeTodoTitle">completed tasks</string>
+    <string name="homeGradeTitle">Avarage grade</string>
+    <string name="homeTodoTitle">Completed tasks</string>
     <string name="veranstaltung">Event</string>
     <string name="day">Day</string>
+    <string name="notenTitel">Overview of grades</string>
+    <string name="block">Block</string>
+    <string name="modulname">Modulename</string>
+    <string name="prof">Instructor</string>
 </resources>

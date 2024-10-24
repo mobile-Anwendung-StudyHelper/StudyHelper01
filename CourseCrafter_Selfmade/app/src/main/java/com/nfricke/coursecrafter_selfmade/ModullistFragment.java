@@ -20,6 +20,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
 public class ModullistFragment extends Fragment {
 
     private View view;
@@ -97,6 +99,22 @@ public class ModullistFragment extends Fragment {
         final Spinner tagSpinner3 = dialogView.findViewById(R.id.tagSpinnerInput3);
         final Spinner blockSpinner3 = dialogView.findViewById(R.id.blockSpinnerInput3);
         final EditText raumInput3 = dialogView.findViewById(R.id.raumInput3);
+        final TextView v_one = dialogView.findViewById(R.id.Veranstaltung_one);
+        final TextView v_two = dialogView.findViewById(R.id.Veranstaltung_two);
+        final TextView v_three = dialogView.findViewById(R.id.Veranstaltung_three);
+
+        final TextView day_one = dialogView.findViewById(R.id.day_one);
+        final TextView day_two = dialogView.findViewById(R.id.day_two);
+        final TextView day_three = dialogView.findViewById(R.id.day_three);
+
+        final TextView block_one = dialogView.findViewById(R.id.block_one);
+        final TextView block_two = dialogView.findViewById(R.id.block_two);
+        final TextView block_three = dialogView.findViewById(R.id.block_three);
+
+        final TextView room_one = dialogView.findViewById(R.id.room_one);
+        final TextView room_two = dialogView.findViewById(R.id.room_two);
+        final TextView room_three = dialogView.findViewById(R.id.room_three);
+
 
         ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).wochentage);
         tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -108,6 +126,19 @@ public class ModullistFragment extends Fragment {
         blockSpinner1.setAdapter(blockAdapter);
         blockSpinner2.setAdapter(blockAdapter);
         blockSpinner3.setAdapter(blockAdapter);
+
+        v_one.setText(getString(R.string.veranstaltung) + " 1:");
+        v_two.setText(getString(R.string.veranstaltung) + " 2:");
+        v_three.setText(getString(R.string.veranstaltung) + " 3:");
+        day_one.setText(getString(R.string.day));
+        day_two.setText(getString(R.string.day));
+        day_three.setText(getString(R.string.day));
+        block_one.setText(getString(R.string.block));
+        block_two.setText(getString(R.string.block));
+        block_three.setText(getString(R.string.block));
+        room_one.setText(getString(R.string.room));
+        room_two.setText(getString(R.string.room));
+        room_three.setText(getString(R.string.room));
 
         builder.setTitle(getString(R.string.add_title))
                 .setPositiveButton(getString(R.string.add_Button), new DialogInterface.OnClickListener() {
@@ -170,6 +201,12 @@ public class ModullistFragment extends Fragment {
         final TextView day_one = dialogView.findViewById(R.id.day_one);
         final TextView day_two = dialogView.findViewById(R.id.day_two);
         final TextView day_three = dialogView.findViewById(R.id.day_three);
+        final TextView block_one = dialogView.findViewById(R.id.block_one);
+        final TextView block_two = dialogView.findViewById(R.id.block_two);
+        final TextView block_three = dialogView.findViewById(R.id.block_three);
+        final TextView room_one = dialogView.findViewById(R.id.room_one);
+        final TextView room_two = dialogView.findViewById(R.id.room_two);
+        final TextView room_three = dialogView.findViewById(R.id.room_three);
 
         ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).wochentage);
         tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -201,7 +238,12 @@ public class ModullistFragment extends Fragment {
         day_one.setText(getString(R.string.day));
         day_two.setText(getString(R.string.day));
         day_three.setText(getString(R.string.day));
-
+        block_one.setText(getString(R.string.block));
+        block_two.setText(getString(R.string.block));
+        block_three.setText(getString(R.string.block));
+        room_one.setText(getString(R.string.room));
+        room_two.setText(getString(R.string.room));
+        room_three.setText(getString(R.string.room));
         builder.setTitle(getString(R.string.edit_Title))
                 .setPositiveButton(getString(R.string.save_button), new DialogInterface.OnClickListener() {
                     @Override

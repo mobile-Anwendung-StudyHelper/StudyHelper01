@@ -8,14 +8,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/homemodulcard"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/hometodocard"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,11 +25,11 @@
                 android:id="@+id/HomeTodaytitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:gravity="center_horizontal"
+                android:padding="16dp"
                 android:text="Heute:"
-                android:padding="16dp"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -40,10 +39,10 @@
                     android:id="@+id/HomeModules"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="16dp"
+                    android:textSize="18sp" />
 
             </ScrollView>
         </LinearLayout>
