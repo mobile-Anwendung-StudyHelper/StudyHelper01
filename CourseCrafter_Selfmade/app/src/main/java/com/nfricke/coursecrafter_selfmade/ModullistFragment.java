@@ -108,8 +108,8 @@ public class ModullistFragment extends Fragment {
         blockSpinner2.setAdapter(blockAdapter);
         blockSpinner3.setAdapter(blockAdapter);
 
-        builder.setTitle("Neues Modul Hinzufügen")
-                .setPositiveButton("Hinzufügen", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.add_title))
+                .setPositiveButton(getString(R.string.add_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String modulName = modulNameInput.getText().toString();
@@ -119,7 +119,7 @@ public class ModullistFragment extends Fragment {
                         String[] raum = new String[] { raumInput1.getText().toString(), raumInput2.getText().toString(), raumInput3.getText().toString()};
 
                         if (modulName.isEmpty()) {
-                            Toast.makeText(getActivity(), "Modulname darf nicht leer sein", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.modulname_error), Toast.LENGTH_SHORT).show();
                             return;
                         }
 
@@ -127,14 +127,14 @@ public class ModullistFragment extends Fragment {
                         ((MainActivity)getActivity()).modulManager.add(new Modul(modulName, profName, tag, block, raum, false, 0));
                         ((MainActivity)getActivity()).modulManagerDAO.saveModulManager(((MainActivity)getActivity()).modulManager);
                         modulListAdapter.notifyDataSetChanged();
-                        Toast.makeText(getActivity(), "Modul hinzugefügt", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.add_suggsess), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Toast.makeText(getActivity(), "Abgebrochen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.create().show();
@@ -186,8 +186,8 @@ public class ModullistFragment extends Fragment {
         blockSpinner3.setSelection(editModul.getBlock(2));
         raumInput3.setText(editModul.getRaum(2));
 
-        builder.setTitle("Modul Bearbeiten")
-                .setPositiveButton("Speichern", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.edit_Title))
+                .setPositiveButton(getString(R.string.save_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String modulName = modulNameInput.getText().toString();
@@ -197,7 +197,7 @@ public class ModullistFragment extends Fragment {
                         String[] raum = new String[] { raumInput1.getText().toString(), raumInput2.getText().toString(), raumInput3.getText().toString()};
 
                         if (modulName.isEmpty()) {
-                            Toast.makeText(getActivity(), "Modulname darf nicht leer sein", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.modulname_error), Toast.LENGTH_SHORT).show();
                             return;
                         }
 
@@ -205,14 +205,14 @@ public class ModullistFragment extends Fragment {
                         ((MainActivity)getActivity()).modulManager.set(position, new Modul(modulName, profName, tag, block, raum, editModul.isBelegt(), editModul.getNote()));
                         ((MainActivity)getActivity()).modulManagerDAO.saveModulManager(((MainActivity)getActivity()).modulManager);
                         modulListAdapter.notifyDataSetChanged();
-                        Toast.makeText(getActivity(), "Modul gespeichert", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.save_modul), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Toast.makeText(getActivity(), "Abgebrochen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.create().show();

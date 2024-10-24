@@ -33,15 +33,16 @@ public class ModulListAdapter extends ArrayAdapter<Modul>{
         Modul modul = getItem(position);
 
         Button belegtButton = currentItemView.findViewById(R.id.modullist_belegt_button);
+        assert modul != null;
         if (modul.isBelegt()) belegtButton.setText("✓"); else belegtButton.setText("+");
         belegtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 modul.setBelegt(!modul.isBelegt());
                 if (modul.isBelegt()) {
-                    Toast.makeText(getContext(),modul.getModulName() + " wird belegt", Toast.LENGTH_SHORT).show();
-                } else if (!modul.isBelegt()) {
-                    Toast.makeText(getContext(),modul.getModulName() + " wird nicht belegt", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),modul.getModulName() + " "+ getContext().getString(R.string.t_belegen), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(),modul.getModulName() + " " + getContext().getString(R.string.f_belegen), Toast.LENGTH_SHORT).show();
                 }
                 ((MainActivity)getContext()).modulManagerDAO.saveModulManager(((MainActivity)getContext()).modulManager);
                 notifyDataSetChanged();
@@ -54,7 +55,7 @@ public class ModulListAdapter extends ArrayAdapter<Modul>{
         if (modul.getProfName().isEmpty()) textView2.setText("-"); else textView2.setText(modul.getProfName());
 
         TextView textView3 = currentItemView.findViewById(R.id.modullist_note);
-        if (modul.getNote() == 0) textView3.setText("Note: -"); else textView3.setText("Note: " + modul.getNoteString());
+        if (modul.getNote() == 0) textView3.setText(getContext().getString(R.string.grade)+": -"); else textView3.setText(getContext().getString(R.string.grade)+": " + modul.getNoteString());
 
         TextView textView11 = currentItemView.findViewById(R.id.modullist_tag_1);
         if (modul.getTag(0) == 0) textView11.setText("-"); else textView11.setText(((MainActivity)getContext()).wochentage[modul.getTag(0)]);

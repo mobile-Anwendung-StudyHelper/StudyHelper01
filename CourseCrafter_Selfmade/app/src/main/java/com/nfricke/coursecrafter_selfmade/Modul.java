@@ -59,7 +59,7 @@ public class Modul {
     public static int getAnzahlVeranstaltungen() {
         return new Modul().anzahlVeranstaltungen;
     }
-    public void printTest() {
+    /*public void printTest() {
         System.out.println(this.getModulName());
         System.out.println(this.getProfName());
         System.out.println(this.getNote());
@@ -70,5 +70,5 @@ public class Modul {
             System.out.println("Raum" + i + ":  " + this.getRaum(i));
         }
         System.out.println("-------");
-    }
+    }*/
 }

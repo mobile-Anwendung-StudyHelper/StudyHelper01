@@ -48,12 +48,6 @@ public class FAQFragment extends Fragment {
                 detailFragment.setArguments(bundle);
 
                 ((MainActivity) getActivity()).replaceFragment(detailFragment);
-
-                // Fragment-Transaktion starten (hier musst du ggf. deine Fragment-Manager-Logik anpassen)
-                /*getParentFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout, detailFragment) // Ersetze 'R.id.fragment_container_view' mit der ID deines Containers
-                        .addToBackStack(null)
-                        .commit();*/
             }
         });
 

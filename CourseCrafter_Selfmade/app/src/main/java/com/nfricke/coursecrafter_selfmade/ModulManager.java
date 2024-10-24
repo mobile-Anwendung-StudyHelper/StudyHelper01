@@ -59,10 +59,11 @@ public class ModulManager extends ArrayList<Modul> {
         }
         return false;
     }
-
+    /*
     public void printTest() {
         for (Modul s : this) {
             s.printTest();
         }
     }
+     */
 }

@@ -1,5 +1,6 @@
 package com.nfricke.coursecrafter_selfmade;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -35,7 +36,7 @@ public class NotenFragment extends Fragment {
         notesListView.setAdapter(notenListAdapter);
 
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
-        durchschnittTextView. setText((((MainActivity) getActivity()).modulManager.durchschnitt() > 0 ? "Durchschnitt: " + ((MainActivity) getActivity()).modulManager.durchschnitt() : "Keine Noten"));
+        durchschnittTextView. setText((((MainActivity) getActivity()).modulManager.durchschnitt() > 0 ? getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt() : getString(R.string.no_grade)));
 
         notesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -80,23 +81,24 @@ public class NotenFragment extends Fragment {
         notenSpinner.setSelection(currentNotePosition);
 
 
-        builder.setTitle("Note für " + selectedModule.getModulName() + " auswählen")
-                .setPositiveButton("Hinzufügen", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.grade_for) + " " + selectedModule.getModulName() + " " + getString(R.string.auswaehlen))
+                .setPositiveButton(getString(R.string.add_Button), new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int notePosition = notenSpinner.getSelectedItemPosition();
                         selectedModule.setNote(noten[notePosition]);
                         ((MainActivity) getActivity()).modulManagerDAO.saveModulManager(((MainActivity) getActivity()).modulManager);
                         notenListAdapter.notifyDataSetInvalidated();
-                        durchschnittTextView. setText("Durchschnitt: " + ((MainActivity) getActivity()).modulManager.durchschnitt());
-                        Toast.makeText(getActivity(), "Note angepasst", Toast.LENGTH_SHORT).show();
+                        durchschnittTextView. setText(getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt());
+                        Toast.makeText(getActivity(), getString(R.string.edit_grade), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Toast.makeText(getActivity(), "Abgebrochen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                     }
                 });
 

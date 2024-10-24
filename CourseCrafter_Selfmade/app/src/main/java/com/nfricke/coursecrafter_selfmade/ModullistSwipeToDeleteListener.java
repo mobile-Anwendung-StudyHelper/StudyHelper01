@@ -42,8 +42,8 @@ public class ModullistSwipeToDeleteListener extends GestureDetector.SimpleOnGest
             if (position >= 0 && position < ((MainActivity)activity).modulManager.size()) {
                 // Show confirmation dialog
                 new AlertDialog.Builder(activity)
-                        .setTitle(((MainActivity)activity).modulManager.get(position).getModulName() + " wircklich löschen?")
-                        .setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
+                        .setTitle(((MainActivity)activity).modulManager.get(position).getModulName() + " " +activity.getString(R.string.del_question)+"?")
+                        .setPositiveButton(activity.getString(R.string.del_button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // Remove the item from the data source
@@ -52,14 +52,14 @@ public class ModullistSwipeToDeleteListener extends GestureDetector.SimpleOnGest
                                 ((MainActivity)activity).modulManagerDAO.saveModulManager(((MainActivity)activity).modulManager);
                                 // Notify the adapter of deletion
                                 modulAdapter.notifyDataSetChanged();
-                                Toast.makeText(activity, "Modul gelöscht", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, activity.getString(R.string.del_true), Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(activity.getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss(); // Cancel the dialog
-                                Toast.makeText(activity, "Abgebrochen", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, activity.getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                                 modulAdapter.notifyDataSetChanged(); // Reset the view without deletion
                             }
                         })

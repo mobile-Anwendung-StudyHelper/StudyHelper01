@@ -53,7 +53,8 @@ public class AssetSchemeHandler extends SchemeHandler {
                 }
                 return ImageItem.withResult(drawable);
             } catch (IOException e) {
-                Log.e("AssetSchemeHandler", "Fehler beim Laden des Bildes: " + uri, e);
+                String code = context.getString(R.string.image_load_error);
+                Log.e("AssetSchemeHandler", code + uri, e);
             }
         }
         return null;

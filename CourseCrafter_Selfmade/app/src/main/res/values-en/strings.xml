@@ -1,23 +1,24 @@
 <resources>
     <string name="app_name">CourseCrafter</string>
-    <string name="modullist_fragment_title">Modulliste</string>
-    <string name="modulplan_fragment_title">Modulplan</string>
-    <string name="faq_fragment_title">Tipps zum Studium</string>
-    <string name="rechner_fragment_title">Rechner</string>
+
+    <string name="modullist_fragment_title">Modul List</string>
+    <string name="modulplan_fragment_title">Modul Plan</string>
+    <string name="faq_fragment_title">Study Tips</string>
+    <string name="rechner_fragment_title">Calculator</string>
     <string name="tictacto_fragment_title">Tic Tac Toe</string>
-    <string name="nav_fragment_title">Mehr</string>
+    <string name="nav_fragment_title">More</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="noten_fragment_title">Notenübersicht</string>
-    <string name="todo_fragment_title">Todo-Liste</string>
+    <string name="noten_fragment_title">My Grade</string>
+    <string name="todo_fragment_title">Todo-List</string>
     <string name="home_fragment_title">Home</string>
-    <string name="image_load_error">Fehler beim Laden des Bildes:</string>
-    <string name="no_modul">Heute hast du keine Module</string>
-    <string name="Aufgaben">der Aufgaben erledigt</string>
-    <string name="Durchschnittsnote">Durchschnittsnote</string>
-    <string name="no_grade">Keine Note vorhanden</string>
+    <string name="image_load_error">Error loading image:</string>
+    <string name="no_modul">No Module today</string>
+    <string name="Aufgaben">of tasks completed</string>
+    <string name="Durchschnittsnote">average mark</string>
+    <string name="no_grade">No grades available</string>
     <string name="t_belegen">wird belegt</string>
     <string name="f_belegen">wird nicht belegt</string>
-    <string name="grade">Note</string>
+    <string name="grade">Grade</string>
     <string name="add_title">Neues Modul Hinzufügen</string>
     <string name="add_suggsess">Modul hinzugefügt</string>
     <string name="add_Button">Hinzufügen</string>

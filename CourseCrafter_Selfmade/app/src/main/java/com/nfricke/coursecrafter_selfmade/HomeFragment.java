@@ -1,5 +1,6 @@
 package com.nfricke.coursecrafter_selfmade;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -22,6 +23,7 @@ public class HomeFragment extends Fragment {
     private TodoManager todoManager;
     private String[] bloecke;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -101,15 +103,15 @@ public class HomeFragment extends Fragment {
             if (!modul.getRaum(n).isEmpty()) modulesToday.append(" @ ").append(modul.getRaum(n));
             modulesToday.append("\n");
         }
-        homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : "Heute keine Module");
+        homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : getString(R.string.no_modul));
 
         //---
 
         homeProgressBar.setProgress((int) todoManager.getAnzahlProzent(true));
-        homeProgressText.setText((int) todoManager.getAnzahlProzent(true) + "% der Aufgaben erledigt (" + todoManager.getAnzahl(true) + "/" + todoManager.getAnzahl() + ")");
+        homeProgressText.setText((int) todoManager.getAnzahlProzent(true) + "% " + getString(R.string.Aufgaben) +" (" + todoManager.getAnzahl(true) + "/" + todoManager.getAnzahl() + ")");
 
         double durchschnitt = modulManager.durchschnitt();
-        homeNoteText.setText((durchschnitt > 0 ? "Durchschnittsnote: " + durchschnitt : "Keine Noten"));
+        homeNoteText.setText((durchschnitt > 0 ? getString(R.string.Durchschnittsnote)+": " + durchschnitt : getString(R.string.no_grade)));
 
         return view;
     }

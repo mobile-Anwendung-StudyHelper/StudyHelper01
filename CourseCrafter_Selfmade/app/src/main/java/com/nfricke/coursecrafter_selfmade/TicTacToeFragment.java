@@ -39,7 +39,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
 
         }
 
-        gewinnerTextView = view.findViewById(R.id.gewinnerTextView);
+        //gewinnerTextView = view.findViewById(R.id.gewinnerTextView);
         neuesSpielButton = view.findViewById(R.id.neuesSpielButton);
         neuesSpielButton.setOnClickListener(v -> neuesSpiel());
 
@@ -81,7 +81,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
                     }
                     aktuellerSpieler = 1;
 
-                    gewinnerTextView.setText("Gewinner:");
+                    //gewinnerTextView.setText("Gewinner:");
                 } else if (istUnentschieden()) {
                     zeigeUnentschieden();
                     for (int i = 0; i < 3; i++) {
@@ -94,7 +94,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
                     }
                     aktuellerSpieler = 1;
 
-                    gewinnerTextView.setText("Gewinner:");
+                    //gewinnerTextView.setText("Gewinner:");
                 } else {
                     aktuellerSpieler = (aktuellerSpieler == 1) ? 2 : 1;
                 }
@@ -176,7 +176,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         }
         aktuellerSpieler = 1;
 
-        gewinnerTextView.setText("Gewinner:");
+        //gewinnerTextView.setText("Gewinner:");
 
         // Punktestand zurücksetzen
         spieler1Punkte = 0;
