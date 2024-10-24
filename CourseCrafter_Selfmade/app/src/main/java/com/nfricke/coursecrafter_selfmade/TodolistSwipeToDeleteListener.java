@@ -42,8 +42,8 @@ public class TodolistSwipeToDeleteListener extends GestureDetector.SimpleOnGestu
             if (position >= 0 && position < ((MainActivity)activity).todoManager.size()) {
                 // Show confirmation dialog
                 new AlertDialog.Builder(activity)
-                        .setTitle(((MainActivity)activity).todoManager.get(position).getName() + " wircklich löschen?")
-                        .setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
+                        .setTitle(((MainActivity)activity).todoManager.get(position).getName() + " " +activity.getString(R.string.del_question) + "?")
+                        .setPositiveButton(activity.getString(R.string.del_button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // Remove the item from the data source
@@ -52,14 +52,14 @@ public class TodolistSwipeToDeleteListener extends GestureDetector.SimpleOnGestu
                                 ((MainActivity)activity).todoManagerDAO.saveTodoManager(((MainActivity)activity).todoManager);
                                 // Notify the adapter of deletion
                                 todoAdapter.notifyDataSetChanged();
-                                Toast.makeText(activity, "Todo gelöscht", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, activity.getString(R.string.del_todo), Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(activity.getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss(); // Cancel the dialog
-                                Toast.makeText(activity, "Abgebrochen", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity, activity.getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                                 todoAdapter.notifyDataSetChanged(); // Reset the view without deletion
                             }
                         })

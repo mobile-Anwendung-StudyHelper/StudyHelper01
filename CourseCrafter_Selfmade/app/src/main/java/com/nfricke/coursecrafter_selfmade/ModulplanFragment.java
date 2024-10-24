@@ -97,13 +97,13 @@ public class ModulplanFragment extends Fragment {
             String[][] modules = ((MainActivity)getActivity()).modulManager.getByTagBlock(currentDayIndex, block);
 
             if (modules.length == 0) {
-                scheduleBuilder.append("  Keine Veranstaltungen\n");
+                scheduleBuilder.append(" "+getString(R.string.f_veranstaltung)+"\n");
             } else {
                 for (String[] module : modules) {
                     scheduleBuilder
                             .append("  ")
                             .append(module[0]) // Module Name
-                            .append(" - Raum: ")
+                            .append(" - " + getString(R.string.room) + ": ")
                             .append(module[1]) // Room
                             .append("\n");
                 }

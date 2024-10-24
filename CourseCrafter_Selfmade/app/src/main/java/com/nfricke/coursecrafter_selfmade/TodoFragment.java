@@ -76,26 +76,26 @@ public class TodoFragment extends Fragment {
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView)
-                .setTitle("Todo Bearbeiten")
-                .setPositiveButton("Speichern", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.todo_edit))
+                .setPositiveButton(getString(R.string.save_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String todoName = todoNameInput.getText().toString();
                         if (todoName.isEmpty()) {
-                            Toast.makeText(getActivity(), "Todo darf nicht leer sein", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.todo_error), Toast.LENGTH_SHORT).show();
                             return;
                         }
                         ((MainActivity)getActivity()).todoManager.set(position, new Todo(todoName,selectedTodo.isErledigt()));
                         ((MainActivity)getActivity()).todoManagerDAO.saveTodoManager(((MainActivity)getActivity()).todoManager);
                         todoListAdapter.notifyDataSetChanged();
-                        Toast.makeText(getActivity(), "Todo gespeichert", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.todo_save), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Toast.makeText(getActivity(), "Abgebrochen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.create().show();
@@ -109,26 +109,26 @@ public class TodoFragment extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView)
-                .setTitle("Hinzufügen")
+                .setTitle(getString(R.string.add_Button))
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String todoName = todoNameInput.getText().toString();
                         if (todoName.isEmpty()) {
-                            Toast.makeText(getActivity(), "Todo darf nicht leer sein", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getString(R.string.todo_error), Toast.LENGTH_SHORT).show();
                             return;
                         }
                         ((MainActivity)getActivity()).todoManager.add(new Todo(todoName, false));
                         ((MainActivity)getActivity()).todoManagerDAO.saveTodoManager(((MainActivity)getActivity()).todoManager);
                         todoListAdapter.notifyDataSetChanged();
-                        Toast.makeText(getActivity(), "Todo gespeichert", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.todo_save), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton("Abbruch", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Toast.makeText(getActivity(), "Abgebrochen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.create().show();

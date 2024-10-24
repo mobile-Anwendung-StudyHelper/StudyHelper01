@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -140,6 +141,8 @@ public class ModullistFragment extends Fragment {
         builder.create().show();
     }
 
+
+    @SuppressLint("SetTextI18n")
     private void showEditModuleDialog(int position) {
         // Inflate the dialog view with your custom form
         LayoutInflater inflaterAddDialog = LayoutInflater.from(getActivity());
@@ -161,6 +164,12 @@ public class ModullistFragment extends Fragment {
         final Spinner tagSpinner3 = dialogView.findViewById(R.id.tagSpinnerInput3);
         final Spinner blockSpinner3 = dialogView.findViewById(R.id.blockSpinnerInput3);
         final EditText raumInput3 = dialogView.findViewById(R.id.raumInput3);
+        final TextView v_one = dialogView.findViewById(R.id.Veranstaltung_one);
+        final TextView v_two = dialogView.findViewById(R.id.Veranstaltung_two);
+        final TextView v_three = dialogView.findViewById(R.id.Veranstaltung_three);
+        final TextView day_one = dialogView.findViewById(R.id.day_one);
+        final TextView day_two = dialogView.findViewById(R.id.day_two);
+        final TextView day_three = dialogView.findViewById(R.id.day_three);
 
         ArrayAdapter<String> tagAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ((MainActivity)getActivity()).wochentage);
         tagAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -177,6 +186,7 @@ public class ModullistFragment extends Fragment {
         modulNameInput.setText(editModul.getModulName());
         profNameInput.setText(editModul.getProfName());
         tagSpinner1.setSelection(editModul.getTag(0));
+
         blockSpinner1.setSelection(editModul.getBlock(0));
         raumInput1.setText(editModul.getRaum(0));
         tagSpinner2.setSelection(editModul.getTag(1));
@@ -185,6 +195,12 @@ public class ModullistFragment extends Fragment {
         tagSpinner3.setSelection(editModul.getTag(2));
         blockSpinner3.setSelection(editModul.getBlock(2));
         raumInput3.setText(editModul.getRaum(2));
+        v_one.setText(getString(R.string.veranstaltung) + " 1:");
+        v_two.setText(getString(R.string.veranstaltung) + " 2:");
+        v_three.setText(getString(R.string.veranstaltung) + " 3:");
+        day_one.setText(getString(R.string.day));
+        day_two.setText(getString(R.string.day));
+        day_three.setText(getString(R.string.day));
 
         builder.setTitle(getString(R.string.edit_Title))
                 .setPositiveButton(getString(R.string.save_button), new DialogInterface.OnClickListener() {
@@ -206,6 +222,7 @@ public class ModullistFragment extends Fragment {
                         ((MainActivity)getActivity()).modulManagerDAO.saveModulManager(((MainActivity)getActivity()).modulManager);
                         modulListAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), getString(R.string.save_modul), Toast.LENGTH_SHORT).show();
+
                     }
                 })
                 .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {

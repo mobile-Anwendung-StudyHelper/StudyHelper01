@@ -18,7 +18,7 @@
     <string name="t_belegen">wird belegt</string>
     <string name="f_belegen">wird nicht belegt</string>
     <string name="grade">Note</string>
-    <string name="add_title">Neues Modul Hinzufügen</string>
+    <string name="add_title">Neues Modul hinzufügen</string>
     <string name="add_suggsess">Modul hinzugefügt</string>
     <string name="add_Button">Hinzufügen</string>
     <string name="modulname_error">Modulname darf nicht leer sein</string>
@@ -34,4 +34,27 @@
     <string name="edit_grade">Note angepasst</string>
     <string name="auswaehlen">auswählen</string>
     <string name="grade_for">Note für</string>
+    <string name="mo">Montag</string>
+    <string name="di">Dienstag</string>
+    <string name="mi">Mittwoch</string>
+    <string name="don">Donnerstag</string>
+    <string name="sa">Samstag</string>
+    <string name="fr">Freitag</string>
+    <string name="so">Sonntag</string>
+    <string name="aufgabe">Aufgabe</string>
+    <string name="del_todo">ToDo gelöscht</string>
+    <string name="player">Spieler</string>
+    <string name="new_game">Neues Spiel</string>
+    <string name="unentschieden">Unentschieden</string>
+    <string name="win">hat gewonnen</string>
+    <string name="f_veranstaltung">keine Veranstaltungen</string>
+    <string name="room">Raum</string>
+    <string name="today">Heute</string>
+    <string name="todo_edit">ToDo bearbeiten</string>
+    <string name="todo_save">ToDo gespeichert</string>
+    <string name="todo_error">Todo darf nicht leer sein</string>
+    <string name="homeTodoTitle">Erledigte ToDos</string>
+    <string name="homeGradeTitle">Notendurchschnitt</string>
+    <string name="veranstaltung">Veranstaltung</string>
+    <string name="day">Tag</string>
 </resources>

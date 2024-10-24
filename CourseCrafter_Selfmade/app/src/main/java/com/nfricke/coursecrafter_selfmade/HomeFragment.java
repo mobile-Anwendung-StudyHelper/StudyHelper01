@@ -34,13 +34,15 @@ public class HomeFragment extends Fragment {
         }
 
         TextView homeModules = view.findViewById(R.id.HomeModules);
+        TextView todayTitle = view.findViewById(R.id.HomeTodaytitle);
         ProgressBar homeProgressBar = view.findViewById(R.id.homeProgressBar);
         TextView homeProgressText = view.findViewById(R.id.homeProgressText);
         TextView homeNoteText = view.findViewById(R.id.homeNoteText);
-
+        TextView homeTodoTitle = view.findViewById(R.id.homeTitleText);
         CardView homeModulCard = view.findViewById(R.id.homemodulcard);
         CardView homeTodoCard = view.findViewById(R.id.hometodocard);
         CardView homeAverageCard = view.findViewById(R.id.homeaverageCard);
+        TextView homeAvarageTitle = view.findViewById(R.id.homeGradeTitle);
 
         homeModulCard.setOnClickListener(v -> {
             if (getActivity() instanceof MainActivity) {
@@ -104,7 +106,9 @@ public class HomeFragment extends Fragment {
             modulesToday.append("\n");
         }
         homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : getString(R.string.no_modul));
-
+        todayTitle.setText(getString(R.string.today)+":");
+        homeTodoTitle.setText(getString(R.string.homeTodoTitle));
+        homeAvarageTitle.setText(getString(R.string.homeGradeTitle));
         //---
 
         homeProgressBar.setProgress((int) todoManager.getAnzahlProzent(true));

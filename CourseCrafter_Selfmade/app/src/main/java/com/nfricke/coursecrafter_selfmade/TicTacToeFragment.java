@@ -1,5 +1,6 @@
 package com.nfricke.coursecrafter_selfmade;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +46,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
 
         spieler1PunkteTextView = view.findViewById(R.id.spieler1PunkteTextView);
         spieler2PunkteTextView = view.findViewById(R.id.spieler2PunkteTextView);
-
+        neuesSpielButton.setText(getString(R.string.new_game));
         aktualisierePunktestandAnzeige(); // Punktestandanzeige initialisieren
 
         return view;
@@ -138,7 +139,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
     }
 
     private void zeigeGewinner(int spieler) {
-        Toast.makeText(getContext(), "Spieler " + spieler + " hat gewonnen!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.player) + " "+ spieler + " " + getString(R.string.win) + "!" , Toast.LENGTH_SHORT).show();
 
         // Punktestand aktualisieren
         if (spieler == 1) {
@@ -153,16 +154,17 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
 
     private void aktualisierePunktestandAnzeige() {
         getActivity().runOnUiThread(new Runnable() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void run() {
-                spieler1PunkteTextView.setText("Spieler 1: " + spieler1Punkte);
-                spieler2PunkteTextView.setText("Spieler 2: " + spieler2Punkte);
+                spieler1PunkteTextView.setText(getString(R.string.player)+" 1: " + spieler1Punkte);
+                spieler2PunkteTextView.setText(getString(R.string.player)+" 2: " + spieler2Punkte);
             }
         });
     }
 
     private void zeigeUnentschieden() {
-        Toast.makeText(getContext(), "Unentschieden!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.unentschieden), Toast.LENGTH_SHORT).show();
     }
 
     private void neuesSpiel() {

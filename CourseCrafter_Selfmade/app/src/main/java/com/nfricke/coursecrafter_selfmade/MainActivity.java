@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     public TodoManager todoManager;
     public TodoManagerDAO todoManagerDAO;
     public TextView appBarText;
-    public String[] wochentage = new String[]{"<Auswahl>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
-    public String[] bloecke = new String[]{"<Auswahl>","8:15 - 9:45","10:15 - 11:45","12:15 - 13:45","14:15 - 15:45","16:00 - 17:30","17:45 - 19:15"};
+    public String[] wochentage = new String[]{"<auswählen>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
+    public String[] bloecke = new String[]{"<auswählen","08:15 - 09:45","10:15 - 11:45","12:15 - 13:45","14:15 - 15:45","16:00 - 17:30","17:45 - 19:15"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
