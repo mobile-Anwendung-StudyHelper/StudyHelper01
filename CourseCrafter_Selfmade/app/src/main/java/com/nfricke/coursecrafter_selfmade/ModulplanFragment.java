@@ -90,15 +90,12 @@ public class ModulplanFragment extends Fragment {
         StringBuilder scheduleBuilder = new StringBuilder();
 
         for (int block = 1; block < ((MainActivity)getActivity()).bloecke.length; block++) {
-            // Header for the block time
-            scheduleBuilder.append(((MainActivity)getActivity()).bloecke[block]).append(":\n");
-
             // Fetch modules for the current day and block
             String[][] modules = ((MainActivity)getActivity()).modulManager.getByTagBlock(currentDayIndex, block);
 
-            if (modules.length == 0) {
-                scheduleBuilder.append(" "+getString(R.string.f_veranstaltung)+"\n");
-            } else {
+            if (modules.length > 0) {
+                // Header for the block time
+                scheduleBuilder.append(((MainActivity)getActivity()).bloecke[block]).append(":\n");
                 for (String[] module : modules) {
                     scheduleBuilder
                             .append("  ")
@@ -107,51 +104,9 @@ public class ModulplanFragment extends Fragment {
                             .append(module[1]) // Room
                             .append("\n");
                 }
+                scheduleBuilder.append("\n");
             }
-            scheduleBuilder.append("\n");
         }
-
-        moduleScheduleTextView.setText(scheduleBuilder.toString());
+        moduleScheduleTextView.setText(scheduleBuilder.length() > 0 ? scheduleBuilder.toString() : getString(R.string.no_modul));
     }
 }
-
-
-
-
-
-
-
-
-/*package com.nfricke.coursecrafter_selfmade;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.fragment.app.Fragment;
-
-public class ModulplanFragment extends Fragment {
-
-    public ModulplanFragment() {
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_modulplan, container, false);
-
-        /*if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            return inflater.inflate(R.layout.fragment_modulplan_landscape,
-                    container, false);
-        } else {
-            return inflater.inflate(R.layout.fragment_modulplan, container, false);
-        }
-    }
-}*/
-
-
-

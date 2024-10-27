@@ -267,10 +267,22 @@ public class ModullistFragment extends Fragment {
 
                     }
                 })
-                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
+                .setNeutralButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+                        Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(getString(R.string.del_button), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Remove the item from the data source
+                        ((MainActivity) getActivity()).modulManager.remove(position);
+                        // Persist changes if necessary
+                        ((MainActivity) getActivity()).modulManagerDAO.saveModulManager(((MainActivity) getActivity()).modulManager);
+                        // Notify the adapter of deletion
+                        modulListAdapter.notifyDataSetChanged();
                         Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
                     }
                 });

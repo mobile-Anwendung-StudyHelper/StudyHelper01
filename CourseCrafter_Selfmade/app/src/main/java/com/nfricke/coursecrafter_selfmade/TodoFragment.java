@@ -91,11 +91,23 @@ public class TodoFragment extends Fragment {
                         Toast.makeText(getActivity(), getString(R.string.todo_save), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
+                .setNeutralButton(getString(R.string.abbrechen_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                         Toast.makeText(getActivity(), getString(R.string.abgebrochen), Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(getString(R.string.del_button), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Remove the item from the data source
+                        ((MainActivity) getActivity()).todoManager.remove(position);
+                        // Persist changes if necessary
+                        ((MainActivity) getActivity()).todoManagerDAO.saveTodoManager(((MainActivity) getActivity()).todoManager);
+                        // Notify the adapter of deletion
+                        todoListAdapter.notifyDataSetChanged();
+                        Toast.makeText(getActivity(), getString(R.string.del_todo), Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.create().show();

@@ -68,22 +68,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        int todayIndex = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
-        /*StringBuilder modulesToday = new StringBuilder();
-        for (Modul modul : modulManager) {
-            for (int n = 0; n < Modul.getAnzahlVeranstaltungen(); n++) {
-                if (modul.getTag(n) == todayIndex && modul.isBelegt()) {
-                    modulesToday.append(modul.getModulName());
-                    if (modul.getBlock(n) > 0 && modul.getBlock(n) < bloecke.length) {
-                        modulesToday.append(" - ").append(bloecke[modul.getBlock(n)].contains("-") ? bloecke[modul.getBlock(n)].substring(0, bloecke[modul.getBlock(n)].indexOf('-')) : bloecke[modul.getBlock(n)]);
-                    }
-                    if (!modul.getRaum(n).isEmpty()) modulesToday.append(" @ ").append(modul.getRaum(n));
-                    modulesToday.append("\n");
-                }
-            }
-        }
-        homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : "Heute keine Module");*/
-
+        int todayIndex = (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) + 5) % 7 + 1;
         List<ModulWithBlock> todayModulesList = new ArrayList<>();
         for (Modul modul : modulManager) {
             for (int n = 0; n < Modul.getAnzahlVeranstaltungen(); n++) {
@@ -109,7 +94,6 @@ public class HomeFragment extends Fragment {
         todayTitle.setText(getString(R.string.today)+":");
         homeTodoTitle.setText(getString(R.string.homeTodoTitle));
         homeAvarageTitle.setText(getString(R.string.homeGradeTitle));
-        //---
 
         homeProgressBar.setProgress((int) todoManager.getAnzahlProzent(true));
         homeProgressText.setText((int) todoManager.getAnzahlProzent(true) + "% " + getString(R.string.Aufgaben) +" (" + todoManager.getAnzahl(true) + "/" + todoManager.getAnzahl() + ")");
