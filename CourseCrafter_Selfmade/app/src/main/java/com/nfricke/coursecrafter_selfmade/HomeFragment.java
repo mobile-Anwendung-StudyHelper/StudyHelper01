@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ public class HomeFragment extends Fragment {
     private ModulManager modulManager;
     private TodoManager todoManager;
     private String[] bloecke;
+    private ListAdapter HomeModulListView;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -32,8 +35,8 @@ public class HomeFragment extends Fragment {
             todoManager = ((MainActivity) getActivity()).todoManager;
             bloecke = ((MainActivity) getActivity()).bloecke;
         }
-
-        TextView homeModules = view.findViewById(R.id.HomeModules);
+        ListView modulListView = view.findViewById(R.id.HomeModulListView);
+        //TextView homeModules = view.findViewById(R.id.HomeModules);
         TextView todayTitle = view.findViewById(R.id.HomeTodaytitle);
         ProgressBar homeProgressBar = view.findViewById(R.id.homeProgressBar);
         TextView homeProgressText = view.findViewById(R.id.homeProgressText);
@@ -43,6 +46,8 @@ public class HomeFragment extends Fragment {
         CardView homeTodoCard = view.findViewById(R.id.hometodocard);
         CardView homeAverageCard = view.findViewById(R.id.homeaverageCard);
         TextView homeAvarageTitle = view.findViewById(R.id.homeGradeTitle);
+        HomeModulListView adapter = new HomeModulListView(getContext());
+        modulListView.setAdapter(adapter);
 
         homeModulCard.setOnClickListener(v -> {
             if (getActivity() instanceof MainActivity) {
@@ -105,7 +110,7 @@ public class HomeFragment extends Fragment {
             if (!modul.getRaum(n).isEmpty()) modulesToday.append(" @ ").append(modul.getRaum(n));
             modulesToday.append("\n");
         }
-        homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : getString(R.string.no_modul));
+        //homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : getString(R.string.no_modul));
         todayTitle.setText(getString(R.string.today)+":");
         homeTodoTitle.setText(getString(R.string.homeTodoTitle));
         homeAvarageTitle.setText(getString(R.string.homeGradeTitle));
