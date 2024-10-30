@@ -8,6 +8,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.nfricke.coursecrafter_selfmade.databinding.ActivityMainBinding;
 
+import java.text.DateFormatSymbols;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     public ActivityMainBinding binding;
@@ -16,10 +20,21 @@ public class MainActivity extends AppCompatActivity {
     public TodoManager todoManager;
     public TodoManagerDAO todoManagerDAO;
     public TextView appBarText;
-    public String[] wochentage = new String[]{"<auswählen>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
+    //public String[] wochentage = new String[]{"<auswählen>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
     public String[] bloecke = new String[]{"<auswählen>","08:15 - 09:45","10:15 - 11:45","12:15 - 13:45","14:15 - 15:45","16:00 - 17:30","17:45 - 19:15"};
 
-    @Override
+    public String[] getLocalizedWeekdays() {
+        String[] weekdays = new DateFormatSymbols(Locale.getDefault()).getWeekdays();
+        return new String[]{"",weekdays[Calendar.MONDAY], weekdays[Calendar.TUESDAY],
+                weekdays[Calendar.WEDNESDAY], weekdays[Calendar.THURSDAY],
+                weekdays[Calendar.FRIDAY], weekdays[Calendar.SATURDAY],
+                weekdays[Calendar.SUNDAY]};
+    };
+
+public String[] wochentage = getLocalizedWeekdays();
+
+
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
