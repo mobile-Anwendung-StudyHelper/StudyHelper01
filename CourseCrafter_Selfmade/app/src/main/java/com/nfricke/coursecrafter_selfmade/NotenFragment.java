@@ -27,20 +27,31 @@ public class NotenFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_noten, container, false);
         TextView notenTitel = view.findViewById(R.id.notesTitle);
-        TextView notenDurchschnitt = view.findViewById((R.id.noten_durchschnitt_Text));
+        //TextView notenDurchschnitt = view.findViewById((R.id.noten_durchschnitt_Text));
         ListView notesListView = view.findViewById(R.id.notesListView);
         notenListAdapter = new NotenListAdapter(getContext());
         notesListView.setAdapter(notenListAdapter);
         notenTitel.setText(getString(R.string.notenTitel));
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
-        durchschnittTextView.setText(getString(R.string.durchschnitt)+":");
         double note;
         note = ((MainActivity) getActivity()).modulManager.durchschnitt();
-        notenDurchschnitt.setText((note > 0) ? String.valueOf(note) : getString(R.string.no_grade));
+
+        if (note > 0) {
+
+            durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + String.valueOf(note));
+        } else {
+            ;
+            durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + "-");
+        };
+
+
+
+
         notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -94,6 +105,7 @@ public class NotenFragment extends Fragment {
                         ((MainActivity) getActivity()).modulManagerDAO.saveModulManager(((MainActivity) getActivity()).modulManager);
                         notenListAdapter.notifyDataSetInvalidated();
                         durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt());
+
                         Toast.makeText(getActivity(), getString(R.string.edit_grade), Toast.LENGTH_SHORT).show();
                     }
                 })

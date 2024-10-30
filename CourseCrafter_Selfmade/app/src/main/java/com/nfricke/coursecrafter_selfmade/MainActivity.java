@@ -30,20 +30,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Temp: Kann am Ende Gelöscht werden.
-        ModulManager initialmodulManager = new ModulManager();
-        initialmodulManager.add(new Modul("Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}, true, (float) 1.3));
+        //ModulManager initialmodulManager = new ModulManager();
+        /*initialmodulManager.add(new Modul("Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}, true, (float) 1.3));
         initialmodulManager.add(new Modul("Name2", "Prof2", new int[]{3,1,2}, new int[]{4,5,6}, new String[]{"W201","W202","W203"}, true, (float) 0));
         initialmodulManager.add(new Modul("Name3", "Prof3", new int[]{2,3,1}, new int[]{4,5,6}, new String[]{"W301","W302","W303"}, true, (float) 3.3));
         initialmodulManager.add(new Modul("Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}, true, (float) 0));
-        modulManagerDAO.saveModulManager(initialmodulManager);
+        */
+        //modulManagerDAO.saveModulManager(initialmodulManager);
+
 
         // Temp: Kann am Ende Gelöscht werden.
-        TodoManager initialtodoManager = new TodoManager();
-        initialtodoManager.add(new Todo("Aufgabe 1", false));
+        //TodoManager initialtodoManager = new TodoManager();
+        /*initialtodoManager.add(new Todo("Aufgabe 1", false));
         initialtodoManager.add(new Todo("Aufgabe 2", false));
         initialtodoManager.add(new Todo("Aufgabe 3", true));
         initialtodoManager.add(new Todo("Aufgabe 4", false));
-        todoManagerDAO.saveTodoManager(initialtodoManager);
+        */
+        //todoManagerDAO.saveTodoManager(initialtodoManager);
 
 
         todoManagerDAO.readTodoManager(todoManager = new TodoManager());
