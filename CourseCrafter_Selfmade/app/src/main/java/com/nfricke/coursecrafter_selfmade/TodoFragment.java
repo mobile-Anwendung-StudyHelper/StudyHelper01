@@ -122,7 +122,7 @@ public class TodoFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView)
                 .setTitle(getString(R.string.add_Button))
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.add_Button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String todoName = todoNameInput.getText().toString();

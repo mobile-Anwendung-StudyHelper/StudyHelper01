@@ -98,7 +98,7 @@ public class ModulplanFragment extends Fragment {
                 scheduleBuilder.append(((MainActivity)getActivity()).bloecke[block]).append(":\n");
                 for (String[] module : modules) {
                     scheduleBuilder
-                            .append("  ")
+                            .append("")
                             .append(module[0]) // Module Name
                             .append(" - " + getString(R.string.room) + ": ")
                             .append(module[1]) // Room

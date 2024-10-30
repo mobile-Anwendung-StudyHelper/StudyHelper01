@@ -20,13 +20,14 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/moduleScheduleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/transparent"
                 android:padding="16dp"
-                android:textSize="20sp"
-                android:background="@android:color/transparent" />
+                android:textSize="16sp" />
         </ScrollView>
     </androidx.cardview.widget.CardView>
 
