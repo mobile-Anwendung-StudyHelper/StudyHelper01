@@ -29,12 +29,10 @@ public class MainActivity extends AppCompatActivity {
                 weekdays[Calendar.WEDNESDAY], weekdays[Calendar.THURSDAY],
                 weekdays[Calendar.FRIDAY], weekdays[Calendar.SATURDAY],
                 weekdays[Calendar.SUNDAY]};
-    };
+    }
+    public String[] wochentage = getLocalizedWeekdays();
 
-public String[] wochentage = getLocalizedWeekdays();
-
-
-@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         wochentage[0] = "< " + getString(R.string.auswaehlen) + " >";
