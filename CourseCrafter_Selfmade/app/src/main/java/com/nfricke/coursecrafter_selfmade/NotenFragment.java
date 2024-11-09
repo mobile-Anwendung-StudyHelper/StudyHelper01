@@ -66,7 +66,7 @@ public class NotenFragment extends Fragment {
     private void showEditGradeDialog(Modul selectedModule) {
         // Inflate the dialog view with your custom form
         LayoutInflater inflaterAddDialog = LayoutInflater.from(getActivity());
-        View dialogView = inflaterAddDialog.inflate(R.layout.noten_dialog_edit, null);
+        View dialogView = inflaterAddDialog.inflate(R.layout.dialog_edit_noten, null);
         TextView gradeText = dialogView.findViewById(R.id.gradeText);
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

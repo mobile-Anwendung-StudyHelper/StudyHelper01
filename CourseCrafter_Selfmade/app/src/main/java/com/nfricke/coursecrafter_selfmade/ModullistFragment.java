@@ -20,8 +20,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.w3c.dom.Text;
-
 public class ModullistFragment extends Fragment {
 
     private View view;
@@ -81,7 +79,7 @@ public class ModullistFragment extends Fragment {
     private void showAddModuleDialog() {
         // Inflate the dialog view with your custom form
         LayoutInflater inflaterAddDialog = LayoutInflater.from(getActivity());
-        View dialogView = inflaterAddDialog.inflate(R.layout.modullist_dialog_add_edit, null);
+        View dialogView = inflaterAddDialog.inflate(R.layout.dialog_add_edit_modullist, null);
 
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -177,7 +175,7 @@ public class ModullistFragment extends Fragment {
     private void showEditModuleDialog(int position) {
         // Inflate the dialog view with your custom form
         LayoutInflater inflaterAddDialog = LayoutInflater.from(getActivity());
-        View dialogView = inflaterAddDialog.inflate(R.layout.modullist_dialog_add_edit, null);
+        View dialogView = inflaterAddDialog.inflate(R.layout.dialog_add_edit_modullist, null);
 
         // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

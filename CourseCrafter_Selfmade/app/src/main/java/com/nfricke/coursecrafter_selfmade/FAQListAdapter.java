@@ -12,7 +12,7 @@ import java.util.List;
 public class FAQListAdapter extends ArrayAdapter<FAQ> {
 
     public FAQListAdapter(Context context, List<FAQ> faqList) {
-        super(context, R.layout.faqlist_item, faqList);
+        super(context, R.layout.item_faqlist, faqList);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class FAQListAdapter extends ArrayAdapter<FAQ> {
 
         // View wiederverwenden oder neu erstellen
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.faqlist_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_faqlist, parent, false);
         }
 
         // TextViews in der View finden

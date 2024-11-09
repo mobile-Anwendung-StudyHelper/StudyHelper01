@@ -14,22 +14,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Poblic vars need in other classes
     public ActivityMainBinding binding;
     public ModulManager modulManager;
     public ModulManagerDAO modulManagerDAO;
     public TodoManager todoManager;
     public TodoManagerDAO todoManagerDAO;
     public TextView appBarText;
-    //public String[] wochentage = new String[]{"<auswählen>","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"};
     public String[] bloecke = new String[]{"","08:15 - 09:45","10:15 - 11:45","12:15 - 13:45","14:15 - 15:45","16:00 - 17:30","17:45 - 19:15"};
-
-    public String[] getLocalizedWeekdays() {
-        String[] weekdays = new DateFormatSymbols(Locale.getDefault()).getWeekdays();
-        return new String[]{"",weekdays[Calendar.MONDAY], weekdays[Calendar.TUESDAY],
-                weekdays[Calendar.WEDNESDAY], weekdays[Calendar.THURSDAY],
-                weekdays[Calendar.FRIDAY], weekdays[Calendar.SATURDAY],
-                weekdays[Calendar.SUNDAY]};
-    }
     public String[] wochentage = getLocalizedWeekdays();
 
     @Override
@@ -37,36 +29,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         wochentage[0] = "< " + getString(R.string.auswaehlen) + " >";
         bloecke[0] = "< " + getString(R.string.auswaehlen) + " >";
+        //Initialize App
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         appBarText = findViewById(R.id.appBarText);
+        //Initialize DataObjekt and DataAccessObjekt
         modulManagerDAO = new ModulManagerDAO(this);
         todoManagerDAO = new TodoManagerDAO(this);
 
-
-        // Temp: Kann am Ende Gelöscht werden.
-        //ModulManager initialmodulManager = new ModulManager();
-        /*initialmodulManager.add(new Modul("Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}, true, (float) 1.3));
+        // Temp: Can be deleted
+        /*ModulManager initialmodulManager = new ModulManager();
+        initialmodulManager.add(new Modul("Name1", "Prof1", new int[]{1,2,3}, new int[]{4,5,6}, new String[]{"W101","W102","W103"}, true, (float) 1.3));
         initialmodulManager.add(new Modul("Name2", "Prof2", new int[]{3,1,2}, new int[]{4,5,6}, new String[]{"W201","W202","W203"}, true, (float) 0));
         initialmodulManager.add(new Modul("Name3", "Prof3", new int[]{2,3,1}, new int[]{4,5,6}, new String[]{"W301","W302","W303"}, true, (float) 3.3));
         initialmodulManager.add(new Modul("Name4", "", new int[]{0,0,0}, new int[]{0,0,0}, new String[]{"","",""}, true, (float) 0));
-        */
-        //modulManagerDAO.saveModulManager(initialmodulManager);
-
-
-        // Temp: Kann am Ende Gelöscht werden.
-        //TodoManager initialtodoManager = new TodoManager();
-        /*initialtodoManager.add(new Todo("Aufgabe 1", false));
+        modulManagerDAO.saveModulManager(initialmodulManager);
+         */
+        // Temp: Can be deleted
+        /*TodoManager initialtodoManager = new TodoManager();
+        initialtodoManager.add(new Todo("Aufgabe 1", false));
         initialtodoManager.add(new Todo("Aufgabe 2", false));
         initialtodoManager.add(new Todo("Aufgabe 3", true));
         initialtodoManager.add(new Todo("Aufgabe 4", false));
+        todoManagerDAO.saveTodoManager(initialtodoManager);
         */
-        //todoManagerDAO.saveTodoManager(initialtodoManager);
-
 
         todoManagerDAO.readTodoManager(todoManager = new TodoManager());
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
 
+        //Bottom Navigation
         replaceFragment(new HomeFragment());
         appBarText.setText(getString(R.string.home_fragment_title));
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -88,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Implementation of Andriod's own back functionality
     @Override
     public void onBackPressed() {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -107,6 +99,16 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+
+    public String[] getLocalizedWeekdays() {
+        String[] weekdays = new DateFormatSymbols(Locale.getDefault()).getWeekdays();
+        return new String[]{"",weekdays[Calendar.MONDAY], weekdays[Calendar.TUESDAY],
+                weekdays[Calendar.WEDNESDAY], weekdays[Calendar.THURSDAY],
+                weekdays[Calendar.FRIDAY], weekdays[Calendar.SATURDAY],
+                weekdays[Calendar.SUNDAY]};
+    }
+
 
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -65,7 +65,7 @@ public class TodoFragment extends Fragment {
 
     private void showEditTodoDialog(int position) {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View dialogView = inflater.inflate(R.layout.todo_dialog_add_edit, null);
+        View dialogView = inflater.inflate(R.layout.dialog_add_edit_todo, null);
 
         final EditText todoNameInput = dialogView.findViewById(R.id.todoNameInput);
 
@@ -115,7 +115,7 @@ public class TodoFragment extends Fragment {
 
     private void showAddTodoDialog() {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View dialogView = inflater.inflate(R.layout.todo_dialog_add_edit, null);
+        View dialogView = inflater.inflate(R.layout.dialog_add_edit_todo, null);
 
         final EditText todoNameInput = dialogView.findViewById(R.id.todoNameInput);
 

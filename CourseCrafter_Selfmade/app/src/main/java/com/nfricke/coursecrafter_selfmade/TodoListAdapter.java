@@ -22,7 +22,7 @@ public class TodoListAdapter extends ArrayAdapter<Todo> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.todo_item, parent, false);
+            view = LayoutInflater.from(getContext()).inflate(R.layout.item_todo, parent, false);
         }
 
         Todo todo = getItem(position);

@@ -15,7 +15,7 @@ public class NavListAdapter extends ArrayAdapter<String> {
     private final int[] icons;
 
     public NavListAdapter(Context context, String[] options, int[] icons) {
-        super(context, R.layout.nav_item, options);
+        super(context, R.layout.item_nav, options);
         this.icons = icons;
     }
 
@@ -23,7 +23,7 @@ public class NavListAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.nav_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_nav, parent, false);
         }
 
         String option = getItem(position);

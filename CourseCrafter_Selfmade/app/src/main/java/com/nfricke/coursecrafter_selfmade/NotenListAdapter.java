@@ -21,7 +21,7 @@ public class NotenListAdapter extends ArrayAdapter<Modul> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View itemView = convertView;
         if (itemView == null) {
-            itemView = LayoutInflater.from(getContext()).inflate(R.layout.noten_item, parent, false);
+            itemView = LayoutInflater.from(getContext()).inflate(R.layout.item_noten, parent, false);
         }
 
         Modul currentModul = getItem(position);
