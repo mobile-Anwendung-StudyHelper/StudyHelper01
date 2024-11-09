@@ -1,7 +1,8 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.DAO;
 
 import java.util.ArrayList;
 
+//List Object for todos with extra functionality
 public class TodoManager extends ArrayList<Todo> {
 
     public int getAnzahl() { return this.size(); }

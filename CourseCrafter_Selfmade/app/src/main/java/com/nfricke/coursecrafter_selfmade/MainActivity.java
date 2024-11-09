@@ -2,10 +2,26 @@ package com.nfricke.coursecrafter_selfmade;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.nfricke.coursecrafter_selfmade.DAO.ModulManager;
+import com.nfricke.coursecrafter_selfmade.DAO.ModulManagerDAO;
+import com.nfricke.coursecrafter_selfmade.DAO.TodoManager;
+import com.nfricke.coursecrafter_selfmade.DAO.TodoManagerDAO;
+import com.nfricke.coursecrafter_selfmade.Fragment.FAQDetailFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.FAQFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.HomeFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.ModullistFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.ModulplanFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.NavFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.NotenFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.RechnerFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.TicTacToeFragment;
+import com.nfricke.coursecrafter_selfmade.Fragment.TodoFragment;
 import com.nfricke.coursecrafter_selfmade.databinding.ActivityMainBinding;
 
 import java.text.DateFormatSymbols;
@@ -109,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 weekdays[Calendar.SUNDAY]};
     }
 
-
+    //Set new Fragment for both navigation's
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

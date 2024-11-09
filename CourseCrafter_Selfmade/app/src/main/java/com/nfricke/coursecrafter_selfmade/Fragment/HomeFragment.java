@@ -1,15 +1,21 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+
+import com.nfricke.coursecrafter_selfmade.DAO.Modul;
+import com.nfricke.coursecrafter_selfmade.DAO.ModulManager;
+import com.nfricke.coursecrafter_selfmade.DAO.TodoManager;
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -98,7 +104,7 @@ public class HomeFragment extends Fragment {
         homeProgressBar.setProgress((int) todoManager.getAnzahlProzent(true));
         homeProgressText.setText((int) todoManager.getAnzahlProzent(true) + "% " + getString(R.string.Aufgaben) +" (" + todoManager.getAnzahl(true) + "/" + todoManager.getAnzahl() + ")");
 
-        double durchschnitt = modulManager.durchschnitt();
+        double durchschnitt = modulManager.getDurchschnitt();
         homeNoteText.setText((durchschnitt > 0 ? getString(R.string.Durchschnittsnote)+": " + durchschnitt : getString(R.string.no_grade)));
 
         return view;

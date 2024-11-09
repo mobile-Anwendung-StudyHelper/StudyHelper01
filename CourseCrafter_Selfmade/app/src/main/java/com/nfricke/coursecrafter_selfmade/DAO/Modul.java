@@ -1,5 +1,6 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.DAO;
 
+//Module object
 public class Modul {
     private int anzahlVeranstaltungen = 3;
     private String modulName;
@@ -13,6 +14,7 @@ public class Modul {
     public Modul() {
     }
 
+    //Initialize module
     public Modul(String n, String p, int[] t, int[] b, String[] r, boolean be, float no) {
         this.modulName = n;
         this.profName = p;
@@ -23,7 +25,8 @@ public class Modul {
         this.note = no;
     }
 
-    //------------------------------------------
+
+    //------------------------------------------ Getter:
     public String getModulName() { return modulName; }
 
     public String getProfName() { return profName; }
@@ -40,7 +43,7 @@ public class Modul {
 
     public String getNoteString() { return String.valueOf(note); }
 
-    //------------------------------------------
+    //------------------------------------------ Setter
     public void setModulName(String modulName) { this.modulName = modulName; }
 
     public void setProfName(String profName) { this.profName = profName; }
@@ -55,11 +58,13 @@ public class Modul {
 
     public void setNote(float note) { this.note = note; }
 
-    //------------------------------------------
+    //------------------------------------------ Get
     public static int getAnzahlVeranstaltungen() {
         return new Modul().anzahlVeranstaltungen;
     }
-    /*public void printTest() {
+
+    //Temp test method
+    public void printTest() {
         System.out.println(this.getModulName());
         System.out.println(this.getProfName());
         System.out.println(this.getNote());
@@ -70,5 +75,5 @@ public class Modul {
             System.out.println("Raum" + i + ":  " + this.getRaum(i));
         }
         System.out.println("-------");
-    }*/
+    }
 }

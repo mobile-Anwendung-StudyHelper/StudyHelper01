@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.nfricke.coursecrafter_selfmade.R;
 
 public class NavListAdapter extends ArrayAdapter<String> {
 
@@ -26,6 +28,7 @@ public class NavListAdapter extends ArrayAdapter<String> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_nav, parent, false);
         }
 
+        //Set text and Icon of Nav view element
         String option = getItem(position);
         int icon = icons[position];
 

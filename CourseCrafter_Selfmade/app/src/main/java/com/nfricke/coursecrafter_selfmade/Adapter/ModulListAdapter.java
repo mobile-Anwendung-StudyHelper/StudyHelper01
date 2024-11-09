@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.nfricke.coursecrafter_selfmade.DAO.Modul;
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.R;
 
 public class ModulListAdapter extends ArrayAdapter<Modul>{
 
@@ -32,6 +36,7 @@ public class ModulListAdapter extends ArrayAdapter<Modul>{
         // get the position of the view from the ArrayAdapter
         Modul modul = getItem(position);
 
+        //Initialize Belegt Button from Item View List
         Button belegtButton = currentItemView.findViewById(R.id.modullist_belegt_button);
         assert modul != null;
         if (modul.isBelegt()) belegtButton.setText("✓"); else belegtButton.setText("+");
@@ -48,23 +53,22 @@ public class ModulListAdapter extends ArrayAdapter<Modul>{
                 notifyDataSetChanged();
             }});
 
+        //Set textViews with currant module
         TextView textView1 = currentItemView.findViewById(R.id.modullist_modul_name);
         textView1.setText(modul.getModulName());
-
         TextView textView2 = currentItemView.findViewById(R.id.modullist_prof_name);
         if (modul.getProfName().isEmpty()) textView2.setText("-"); else textView2.setText(modul.getProfName());
-
         TextView textView3 = currentItemView.findViewById(R.id.modullist_note);
         if (modul.getNote() == 0) textView3.setText(getContext().getString(R.string.grade)+": -"); else textView3.setText(getContext().getString(R.string.grade)+": " + modul.getNoteString());
-        //TextView v_one = convertView.findViewById(R.id.Veranstaltung_one);
+
         TextView textday = currentItemView.findViewById(R.id.modullist_dayTitle);
         TextView textBlock = currentItemView.findViewById(R.id.modullist_blockTitle);
         TextView textRoom = currentItemView.findViewById(R.id.modullist_roomTitle);
-        TextView textView11 = currentItemView.findViewById(R.id.modullist_tag_1);
-
         textday.setText(getContext().getString(R.string.day));
         textBlock.setText(getContext().getString(R.string.block));
         textRoom.setText(getContext().getString(R.string.room));
+
+        TextView textView11 = currentItemView.findViewById(R.id.modullist_tag_1);
         if (modul.getTag(0) == 0) textView11.setText("-"); else textView11.setText(((MainActivity)getContext()).wochentage[modul.getTag(0)]);
         TextView textView12 = currentItemView.findViewById(R.id.modullist_block_1);
         if (modul.getBlock(0) == 0) textView12.setText("-"); else textView12.setText(((MainActivity)getContext()).bloecke[modul.getBlock(0)]);

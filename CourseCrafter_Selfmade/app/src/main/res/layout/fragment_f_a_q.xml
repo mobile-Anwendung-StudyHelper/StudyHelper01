@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FAQFragment">
+    tools:context=".Fragment.FAQFragment">
     <ListView
         android:id="@+id/faq_listView"
         android:layout_width="match_parent"

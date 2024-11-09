@@ -1,7 +1,8 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.DAO;
 
 import java.io.Serializable;
 
+//FAQ Data object for Fag fragment
 public class FAQ implements Serializable {
 
     private String label;

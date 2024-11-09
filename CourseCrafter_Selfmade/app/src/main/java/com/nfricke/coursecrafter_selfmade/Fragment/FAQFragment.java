@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -7,7 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import androidx.fragment.app.Fragment;
+
+import com.nfricke.coursecrafter_selfmade.DAO.FAQ;
+import com.nfricke.coursecrafter_selfmade.Adapter.FAQListAdapter;
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

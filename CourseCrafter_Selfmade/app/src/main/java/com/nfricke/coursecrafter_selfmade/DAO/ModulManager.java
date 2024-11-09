@@ -1,17 +1,11 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.DAO;
 
 import java.util.ArrayList;
 
+//List Object for modules with extra functionality
 public class ModulManager extends ArrayList<Modul> {
 
-    public int getIndexByName(String name) {
-        for (int i = 0; i < this.size(); i++) {
-            if (this.get(i).getModulName() == name) {
-                return i;
-            }
-        }
-        return -1;
-    }
+    //Get occupied modules
     public String[][] getByTagBlock(int tag, int block) {
         int size = 0;
         for (int i = 0; i < this.size(); i++) {
@@ -36,7 +30,8 @@ public class ModulManager extends ArrayList<Modul> {
         return result;
     }
 
-    public double durchschnitt(){
+    //Get average grade
+    public double getDurchschnitt(){
         ModulManager ergebnis = new ModulManager();
         for ( Modul s: this){
             if (s.getNote() != 0.0 && s.getNote() != 5.0){
@@ -52,18 +47,10 @@ public class ModulManager extends ArrayList<Modul> {
         return Math.round(durchschnit * 100.0) / 100.0;
     }
 
-    public boolean nameIstVorhanden(String name){
-        for ( Modul s: this){
-            if (s.getModulName().equals(name))
-                return true;
-        }
-        return false;
-    }
-    /*
+    //Temp test method
     public void printTest() {
         for (Modul s : this) {
             s.printTest();
         }
     }
-     */
 }

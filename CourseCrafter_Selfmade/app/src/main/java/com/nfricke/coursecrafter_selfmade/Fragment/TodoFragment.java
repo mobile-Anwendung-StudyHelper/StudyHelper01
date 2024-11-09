@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -12,9 +12,17 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.nfricke.coursecrafter_selfmade.DAO.Todo;
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.R;
+import com.nfricke.coursecrafter_selfmade.Adapter.TodoListAdapter;
+import com.nfricke.coursecrafter_selfmade.Listener.TodolistSwipeToDeleteListener;
+
 import java.time.format.DateTimeFormatter;
 
 public class TodoFragment extends Fragment {
@@ -32,21 +40,16 @@ public class TodoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
+        //Initializer List View
         ListView todoListView = view.findViewById(R.id.todoListView);
         FloatingActionButton addTodoButton = view.findViewById(R.id.addTodoButton);
 
         todoListAdapter = new TodoListAdapter(getContext(), ((MainActivity)getActivity()).todoManager);
         todoListView.setAdapter(todoListAdapter);
 
+        //Set listener
         addTodoButton.setOnClickListener(v -> showAddTodoDialog());
-        
-        /*todoListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                showEditTodoDialog(position);
-                return true;
-            }
-        });*/
+
         todoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -63,6 +66,7 @@ public class TodoFragment extends Fragment {
         return view;
     }
 
+    //Edit or Delete a Todo
     private void showEditTodoDialog(int position) {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.dialog_add_edit_todo, null);
@@ -113,12 +117,14 @@ public class TodoFragment extends Fragment {
         builder.create().show();
     }
 
+    //Create new Todo
     private void showAddTodoDialog() {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.dialog_add_edit_todo, null);
 
         final EditText todoNameInput = dialogView.findViewById(R.id.todoNameInput);
 
+        // Create the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(dialogView)
                 .setTitle(getString(R.string.add_Button))

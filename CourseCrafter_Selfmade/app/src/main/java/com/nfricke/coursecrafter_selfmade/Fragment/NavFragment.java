@@ -1,17 +1,20 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.Adapter.NavListAdapter;
+import com.nfricke.coursecrafter_selfmade.R;
 
 
 public class NavFragment extends Fragment {

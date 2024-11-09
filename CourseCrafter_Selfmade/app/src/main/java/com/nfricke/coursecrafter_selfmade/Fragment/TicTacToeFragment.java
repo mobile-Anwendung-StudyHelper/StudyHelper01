@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
+
+import com.nfricke.coursecrafter_selfmade.R;
 
 public class TicTacToeFragment extends Fragment implements View.OnClickListener {
 
@@ -19,12 +22,13 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
     private TextView gewinnerTextView;
     private Button neuesSpielButton;
 
-    // Variablen für die Punkte
+    //Variables for the points
     private TextView spieler1PunkteTextView;
     private TextView spieler2PunkteTextView;
     private int spieler1Punkte = 0;
     private int spieler2Punkte = 0;
 
+    //Initialize fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tictactoe_game,
@@ -40,7 +44,6 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
 
         }
 
-        //gewinnerTextView = view.findViewById(R.id.gewinnerTextView);
         neuesSpielButton = view.findViewById(R.id.neuesSpielButton);
         neuesSpielButton.setOnClickListener(v -> neuesSpiel());
 
@@ -52,6 +55,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         return view;
     }
 
+    //Initialize game
     @Override
     public void onClick(View v) {
         int index = -1;
@@ -81,8 +85,6 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
                         button.setText("");
                     }
                     aktuellerSpieler = 1;
-
-                    //gewinnerTextView.setText("Gewinner:");
                 } else if (istUnentschieden()) {
                     zeigeUnentschieden();
                     for (int i = 0; i < 3; i++) {
@@ -94,8 +96,6 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
                         button.setText("");
                     }
                     aktuellerSpieler = 1;
-
-                    //gewinnerTextView.setText("Gewinner:");
                 } else {
                     aktuellerSpieler = (aktuellerSpieler == 1) ? 2 : 1;
                 }
@@ -103,22 +103,23 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    //Check for winner
     private boolean hatGewonnen(int spieler) {
-        // Überprüfe Reihen
+        // Check rows
         for (int i = 0; i < 3; i++) {
             if (spielfeld[i][0] == spieler && spielfeld[i][1] == spieler && spielfeld[i][2] == spieler) {
                 return true;
             }
         }
 
-        // Überprüfe Spalten
+        // Check columns
         for (int i = 0; i < 3; i++) {
             if (spielfeld[0][i] == spieler && spielfeld[1][i] == spieler && spielfeld[2][i] == spieler) {
                 return true;
             }
         }
 
-        // Überprüfe Diagonalen
+        // Check diagonals
         if ((spielfeld[0][0] == spieler && spielfeld[1][1] == spieler && spielfeld[2][2] == spieler) ||
                 (spielfeld[0][2] == spieler && spielfeld[1][1] == spieler && spielfeld[2][0] == spieler)) {
             return true;
@@ -127,6 +128,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         return false;
     }
 
+    //Check if more move are possible
     private boolean istUnentschieden() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -138,20 +140,21 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         return true;
     }
 
+    //Set toast for Winner and update score
     private void zeigeGewinner(int spieler) {
         Toast.makeText(getContext(), getString(R.string.player) + " "+ spieler + " " + getString(R.string.win) + "!" , Toast.LENGTH_SHORT).show();
 
-        // Punktestand aktualisieren
+        // Update score
         if (spieler == 1) {
             spieler1Punkte++;
         } else {
             spieler2Punkte++;
         }
-
-        // Punktestand anzeigen
+        // View score
         aktualisierePunktestandAnzeige();
     }
 
+    //Set score in TextView
     private void aktualisierePunktestandAnzeige() {
         getActivity().runOnUiThread(new Runnable() {
             @SuppressLint("SetTextI18n")
@@ -163,10 +166,12 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         });
     }
 
+    //Set Toast draw
     private void zeigeUnentschieden() {
         Toast.makeText(getContext(), getString(R.string.unentschieden), Toast.LENGTH_SHORT).show();
     }
 
+    // reset everything
     private void neuesSpiel() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -178,9 +183,6 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
         }
         aktuellerSpieler = 1;
 
-        //gewinnerTextView.setText("Gewinner:");
-
-        // Punktestand zurücksetzen
         spieler1Punkte = 0;
         spieler2Punkte = 0;
         aktualisierePunktestandAnzeige();

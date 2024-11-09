@@ -1,9 +1,11 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.DAO;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 
 public class ModulManagerDAO {
@@ -12,11 +14,13 @@ public class ModulManagerDAO {
     private static String sharedPreferencesDate = "Data";
     private static String sharedPreferencesString = "moduldatafricke";
 
+    //Initialize Data Access Object
     public ModulManagerDAO(Context context){
         sharedPreferences = context.getApplicationContext().getSharedPreferences(sharedPreferencesDate, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     };
 
+    //Save object
     public void saveModulManager(ModulManager modulManager) {
         Gson gson = new Gson();
         String json = gson.toJson(modulManager);
@@ -24,6 +28,7 @@ public class ModulManagerDAO {
         editor.apply();
     }
 
+    //Read object
     public void readModulManager(ModulManager modulManager) {
         Gson gson = new Gson();
         String json = sharedPreferences.getString(sharedPreferencesString,null);

@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -19,6 +19,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.nfricke.coursecrafter_selfmade.DAO.Modul;
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.Adapter.ModulListAdapter;
+import com.nfricke.coursecrafter_selfmade.Listener.ModullistSwipeToDeleteListener;
+import com.nfricke.coursecrafter_selfmade.R;
 
 public class ModullistFragment extends Fragment {
 

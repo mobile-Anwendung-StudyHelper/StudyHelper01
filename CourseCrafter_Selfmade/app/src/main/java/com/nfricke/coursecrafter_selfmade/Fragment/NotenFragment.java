@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -16,6 +16,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.nfricke.coursecrafter_selfmade.DAO.Modul;
+import com.nfricke.coursecrafter_selfmade.MainActivity;
+import com.nfricke.coursecrafter_selfmade.Adapter.NotenListAdapter;
+import com.nfricke.coursecrafter_selfmade.R;
 
 public class NotenFragment extends Fragment {
 
@@ -39,7 +44,7 @@ public class NotenFragment extends Fragment {
         notenTitel.setText(getString(R.string.notenTitel));
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
         double note;
-        note = ((MainActivity) getActivity()).modulManager.durchschnitt();
+        note = ((MainActivity) getActivity()).modulManager.getDurchschnitt();
 
         if (note > 0) {
 
@@ -104,7 +109,7 @@ public class NotenFragment extends Fragment {
                         selectedModule.setNote(noten[notePosition]);
                         ((MainActivity) getActivity()).modulManagerDAO.saveModulManager(((MainActivity) getActivity()).modulManager);
                         notenListAdapter.notifyDataSetInvalidated();
-                        durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.durchschnitt());
+                        durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + ((MainActivity) getActivity()).modulManager.getDurchschnitt());
 
                         Toast.makeText(getActivity(), getString(R.string.edit_grade), Toast.LENGTH_SHORT).show();
                     }

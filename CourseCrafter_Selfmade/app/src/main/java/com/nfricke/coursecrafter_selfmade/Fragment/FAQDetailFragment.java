@@ -1,4 +1,4 @@
-package com.nfricke.coursecrafter_selfmade;
+package com.nfricke.coursecrafter_selfmade.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,10 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+
+import com.nfricke.coursecrafter_selfmade.AssetSchemeHandler;
+import com.nfricke.coursecrafter_selfmade.DAO.FAQ;
+import com.nfricke.coursecrafter_selfmade.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+
 import io.noties.markwon.Markwon;
 import io.noties.markwon.image.ImagesPlugin;
 
