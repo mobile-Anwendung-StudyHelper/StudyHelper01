@@ -21,7 +21,7 @@ import com.nfricke.coursecrafter_selfmade.DAO.Todo;
 import com.nfricke.coursecrafter_selfmade.MainActivity;
 import com.nfricke.coursecrafter_selfmade.R;
 import com.nfricke.coursecrafter_selfmade.Adapter.TodoListAdapter;
-import com.nfricke.coursecrafter_selfmade.Listener.TodolistSwipeToDeleteListener;
+import com.nfricke.coursecrafter_selfmade.Listener_Handler.TodolistSwipeToDeleteListener;
 
 import java.time.format.DateTimeFormatter;
 

@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nfricke.coursecrafter_selfmade.DAO.Modul;
 import com.nfricke.coursecrafter_selfmade.MainActivity;
 import com.nfricke.coursecrafter_selfmade.Adapter.ModulListAdapter;
-import com.nfricke.coursecrafter_selfmade.Listener.ModullistSwipeToDeleteListener;
+import com.nfricke.coursecrafter_selfmade.Listener_Handler.ModullistSwipeToDeleteListener;
 import com.nfricke.coursecrafter_selfmade.R;
 
 public class ModullistFragment extends Fragment {
@@ -58,13 +58,7 @@ public class ModullistFragment extends Fragment {
             }
         });
 
-        /*modulListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                showEditModuleDialog(position);
-                return true;
-            }
-        });*/
+        //Set other lisstener
         modulListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -143,6 +137,7 @@ public class ModullistFragment extends Fragment {
         room_two.setText(getString(R.string.room));
         room_three.setText(getString(R.string.room));
 
+        //create dialog and buttons with listeners
         builder.setTitle(getString(R.string.add_title))
                 .setPositiveButton(getString(R.string.add_Button), new DialogInterface.OnClickListener() {
                     @Override
@@ -247,6 +242,8 @@ public class ModullistFragment extends Fragment {
         room_one.setText(getString(R.string.room));
         room_two.setText(getString(R.string.room));
         room_three.setText(getString(R.string.room));
+
+        //create dialog and buttons with listeners
         builder.setTitle(getString(R.string.edit_Title))
                 .setPositiveButton(getString(R.string.save_button), new DialogInterface.OnClickListener() {
                     @Override

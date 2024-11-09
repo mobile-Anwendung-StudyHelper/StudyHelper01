@@ -29,6 +29,7 @@ public class NavFragment extends Fragment {
 
         listView = view.findViewById(R.id.navListView);
 
+        //Setup the menu items
         final String[] options = {
                 getString(R.string.todo_fragment_title),
                 getString(R.string.modullist_fragment_title),
@@ -46,9 +47,11 @@ public class NavFragment extends Fragment {
                 R.drawable.game_adaptive_fore
         };
 
+        //Set adapter for view
         NavListAdapter adapter = new NavListAdapter(requireContext(), options, icons);
         listView.setAdapter(adapter);
 
+        //Change clicked fragment
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @SuppressLint("SetTextI18n")
             @Override

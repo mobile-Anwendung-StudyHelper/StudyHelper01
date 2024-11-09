@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.nfricke.coursecrafter_selfmade.AssetSchemeHandler;
+import com.nfricke.coursecrafter_selfmade.Listener_Handler.FAQDetailAssetSchemeHandler;
 import com.nfricke.coursecrafter_selfmade.DAO.FAQ;
 import com.nfricke.coursecrafter_selfmade.R;
 
@@ -23,6 +23,7 @@ import io.noties.markwon.image.ImagesPlugin;
 
 public class FAQDetailFragment extends Fragment {
 
+    //Initialize detail FAQ fragment to display Markdown file
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_faq_detail, container, false);
@@ -41,16 +42,15 @@ public class FAQDetailFragment extends Fragment {
         labelView.setText(faq.getLabel());
         titleView.setText(faq.getTitle());
         subtitleView.setText(faq.getSubtitle());
-        //content2.setText(faq.getContent2());
 
-        // Markdown aus Datei lesen und anzeigen
+        // Read and display Markdown from file
         String markdownText = readMarkdownFromAssets(requireContext(), faq.getContent1());
 
         Markwon markwon = Markwon.builder(requireContext())
                 .usePlugin(ImagesPlugin.create(new ImagesPlugin.ImagesConfigure() {
                     @Override
                     public void configureImages(ImagesPlugin plugin) {
-                        plugin.addSchemeHandler(new AssetSchemeHandler(requireContext()));
+                        plugin.addSchemeHandler(new FAQDetailAssetSchemeHandler(requireContext()));
                     }
                 }))
                 .build();
@@ -60,7 +60,7 @@ public class FAQDetailFragment extends Fragment {
         return view;
     }
 
-    // Funktion zum Einlesen der Markdown-Datei
+    // Function for reading the Markdown file
     private String readMarkdownFromAssets(Context context, String fileName) {
         try {
             InputStream inputStream = context.getAssets().open(fileName);

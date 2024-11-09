@@ -36,8 +36,9 @@ public class NotenFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_noten, container, false);
+
+        //Initialize fragment with listview and average grade
         TextView notenTitel = view.findViewById(R.id.notesTitle);
-        //TextView notenDurchschnitt = view.findViewById((R.id.noten_durchschnitt_Text));
         ListView notesListView = view.findViewById(R.id.notesListView);
         notenListAdapter = new NotenListAdapter(getContext());
         notesListView.setAdapter(notenListAdapter);
@@ -45,18 +46,10 @@ public class NotenFragment extends Fragment {
         durchschnittTextView = view.findViewById(R.id.noten_durchschnitt);
         double note;
         note = ((MainActivity) getActivity()).modulManager.getDurchschnitt();
+        if (note > 0) durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + String.valueOf(note));
+        else durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + "-");
 
-        if (note > 0) {
-
-            durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + String.valueOf(note));
-        } else {
-            ;
-            durchschnittTextView.setText(getString(R.string.durchschnitt)+": " + "-");
-        };
-
-
-
-
+        //Set listener for edit grades
         notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -80,15 +73,16 @@ public class NotenFragment extends Fragment {
 
         final Spinner notenSpinner = dialogView.findViewById(R.id.noten_spinner);
 
+        //Set up grade adapter with all posible grades
         final float [] noten = new float[] {0.0F, 1.0F, 1.3F, 1.7F, 2.0F, 2.3F, 2.7F, 3.0F, 3.3F, 3.7F, 4.0F, 5.0F};
         String[] notenStrings = new String[noten.length];
         notenStrings[0] = "-";
         for (int i = 1; i < noten.length; i++) { notenStrings[i] = String.valueOf(noten[i]); }
-
         ArrayAdapter<String> notenSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, notenStrings);
         notenSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         notenSpinner.setAdapter(notenSpinnerAdapter);
 
+        //Set position in spinner
         float currentNote = selectedModule.getNote();
         int currentNotePosition = 0;
         for (int i = 0; i < noten.length; i++) {
@@ -99,7 +93,7 @@ public class NotenFragment extends Fragment {
         }
         notenSpinner.setSelection(currentNotePosition);
 
-
+        //Create dialog for edit with buttons
         builder.setTitle(getString(R.string.grade_for) + " " + selectedModule.getModulName() + " " + getString(R.string.auswaehlen))
                 .setPositiveButton(getString(R.string.add_Button), new DialogInterface.OnClickListener() {
                     @SuppressLint("SetTextI18n")

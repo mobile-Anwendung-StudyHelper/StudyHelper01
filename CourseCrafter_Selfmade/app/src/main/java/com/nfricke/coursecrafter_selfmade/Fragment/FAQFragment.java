@@ -29,25 +29,24 @@ public class FAQFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_f_a_q, container, false);
 
         listView = view.findViewById(R.id.faq_listView); // ID der ListView in fragment_f_a_q_xml
-        // Datenquelle initialisieren (Beispiel)
+        // Initialize data source (example)
         faqList = new ArrayList<>();
         faqList.add(new FAQ("#Lernen", "Die Pomodoro-Technik", "Fokussiert arbeiten und mehr erreichen", "test.md"));
         faqList.add(new FAQ("#Lernen", "Effektives Lernen", "Strategien und Techniken", "test2.md"));
         faqList.add(new FAQ("#Zeitmanagement", "Zeitmanagement im Studium", "Tipps für mehr Effektivität", "test3.md"));
         faqList.add(new FAQ("#Studizeit", "Tipps für ein erfolgreiches Studium", "Wie du dein Studium erfolgreich abschließen kannst", "test4.md"));
 
-        // Adapter erstellen und setzen
+        // Create and set adapters
         FAQListAdapter adapter = new FAQListAdapter(getContext(), faqList);
         listView.setAdapter(adapter);
 
-        // OnItemClickListener hinzufügen
+        // Add OnItemClickListener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Hier den Code zum Öffnen des Blog-Artikels einfügen
                 FAQ clickedFAQ = faqList.get(position);
 
-                // Beispiel: Öffne ein neues Fragment mit den Details des FAQ
+                // Example: Open a new fragment with the FAQ details
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("faq", clickedFAQ); // FAQ-Objekt übergeben
 

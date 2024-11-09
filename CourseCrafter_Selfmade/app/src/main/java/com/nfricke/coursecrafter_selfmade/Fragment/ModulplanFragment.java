@@ -67,6 +67,7 @@ public class ModulplanFragment extends Fragment {
         previousDayButton = view.findViewById(R.id.previousDayButton);
         nextDayButton = view.findViewById(R.id.nextDayButton);
 
+        //Initialize button listeners
         previousDayButton.setOnClickListener(v -> navigateDay(false)); // Move to the previous day
         nextDayButton.setOnClickListener(v -> navigateDay(true)); // Move to the next day
 
@@ -76,6 +77,7 @@ public class ModulplanFragment extends Fragment {
         return view;
     }
 
+    //navigation function (boolean true == forward / false == backwards
     private void navigateDay(boolean forward) {
         if (forward) {
             currentDayIndex = ((currentDayIndex) % (((MainActivity)getActivity()).wochentage.length-1))+1;
@@ -85,11 +87,13 @@ public class ModulplanFragment extends Fragment {
         updateDayView();
     }
 
+    //Set modules and Day
     private void updateDayView() {
         currentDayTextView.setText(((MainActivity)getActivity()).wochentage[currentDayIndex]);
         displayModulesForCurrentDay();
     }
 
+    //Get module by day, sort and display
     private void displayModulesForCurrentDay() {
         StringBuilder scheduleBuilder = new StringBuilder();
 

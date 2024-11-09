@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
     private TodoManager todoManager;
     private String[] bloecke;
 
+    //Initialize Home fragment
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class HomeFragment extends Fragment {
             bloecke = ((MainActivity) getActivity()).bloecke;
         }
 
+        //Initialize TextViews
         TextView homeModules = view.findViewById(R.id.HomeModules);
         TextView todayTitle = view.findViewById(R.id.HomeTodaytitle);
         ProgressBar homeProgressBar = view.findViewById(R.id.homeProgressBar);
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
         CardView homeAverageCard = view.findViewById(R.id.homeaverageCard);
         TextView homeAvarageTitle = view.findViewById(R.id.homeGradeTitle);
 
+        //Add click listener for navigation
         homeModulCard.setOnClickListener(v -> {
             if (getActivity() instanceof MainActivity) {
                 ((MainActivity) getActivity()).replaceFragment(new ModulplanFragment());
@@ -74,6 +77,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Get today's modules, sort, and list them
         int todayIndex = (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) + 5) % 7 + 1;
         List<ModulWithBlock> todayModulesList = new ArrayList<>();
         for (Modul modul : modulManager) {
@@ -98,19 +102,21 @@ public class HomeFragment extends Fragment {
         }
         homeModules.setText(modulesToday.length() > 0 ? modulesToday.toString() : getString(R.string.no_modul));
         todayTitle.setText(getString(R.string.today)+":");
-        homeTodoTitle.setText(getString(R.string.homeTodoTitle));
-        homeAvarageTitle.setText(getString(R.string.homeGradeTitle));
 
+        //Set progressbar
+        homeTodoTitle.setText(getString(R.string.homeTodoTitle));
         homeProgressBar.setProgress((int) todoManager.getAnzahlProzent(true));
         homeProgressText.setText((int) todoManager.getAnzahlProzent(true) + "% " + getString(R.string.Aufgaben) +" (" + todoManager.getAnzahl(true) + "/" + todoManager.getAnzahl() + ")");
 
+        //Set average grade
+        homeAvarageTitle.setText(getString(R.string.homeGradeTitle));
         double durchschnitt = modulManager.getDurchschnitt();
         homeNoteText.setText((durchschnitt > 0 ? getString(R.string.Durchschnittsnote)+": " + durchschnitt : getString(R.string.no_grade)));
 
         return view;
     }
 
-
+    //Helper class for today's modules
     private static class ModulWithBlock {
         private final Modul modul;
         private final int blockIndex;
