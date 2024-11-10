@@ -27,6 +27,7 @@ public class NavFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_nav, container, false);
 
+        //Initialize layout links
         listView = view.findViewById(R.id.navListView);
 
         //Setup the menu items

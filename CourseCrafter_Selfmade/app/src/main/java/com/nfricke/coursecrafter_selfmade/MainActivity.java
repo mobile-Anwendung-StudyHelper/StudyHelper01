@@ -30,7 +30,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Poblic vars need in other classes
+    //Public vars need in different classes
     public ActivityMainBinding binding;
     public ModulManager modulManager;
     public ModulManagerDAO modulManagerDAO;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Set Language
         wochentage[0] = "< " + getString(R.string.auswaehlen) + " >";
         bloecke[0] = "< " + getString(R.string.auswaehlen) + " >";
         //Initialize App
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         todoManagerDAO.readTodoManager(todoManager = new TodoManager());
         modulManagerDAO.readModulManager(modulManager = new ModulManager());
 
-        //Bottom Navigation
+        //Bottom Navigation changer
         replaceFragment(new HomeFragment());
         appBarText.setText(getString(R.string.home_fragment_title));
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Ser language for weekdays
     public String[] getLocalizedWeekdays() {
         String[] weekdays = new DateFormatSymbols(Locale.getDefault()).getWeekdays();
         return new String[]{"",weekdays[Calendar.MONDAY], weekdays[Calendar.TUESDAY],

@@ -34,6 +34,7 @@ public class FAQDetailFragment extends Fragment {
             faq = (FAQ) bundle.getSerializable("faq");
         }
 
+        //Initialize layout links
         TextView labelView = view.findViewById(R.id.detail_label);
         TextView titleView = view.findViewById(R.id.detail_title);
         TextView subtitleView = view.findViewById(R.id.detail_subtitle);

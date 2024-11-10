@@ -44,13 +44,13 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
 
         }
 
+        //Initialize layout links
         neuesSpielButton = view.findViewById(R.id.neuesSpielButton);
         neuesSpielButton.setOnClickListener(v -> neuesSpiel());
-
         spieler1PunkteTextView = view.findViewById(R.id.spieler1PunkteTextView);
         spieler2PunkteTextView = view.findViewById(R.id.spieler2PunkteTextView);
         neuesSpielButton.setText(getString(R.string.new_game));
-        aktualisierePunktestandAnzeige(); // Punktestandanzeige initialisieren
+        aktualisierePunktestandAnzeige(); // Initialize scoreboard
 
         return view;
     }
@@ -66,6 +66,7 @@ public class TicTacToeFragment extends Fragment implements View.OnClickListener 
             }
         }
 
+        //Game logic
         if (index != -1) {
             int reihe = index / 3;
             int spalte = index % 3;

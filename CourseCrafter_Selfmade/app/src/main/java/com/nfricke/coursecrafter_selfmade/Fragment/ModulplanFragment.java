@@ -62,6 +62,7 @@ public class ModulplanFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_modulplan, container, false);
 
+        //Initialize layout links
         currentDayTextView = view.findViewById(R.id.currentDayTextView);
         moduleScheduleTextView = view.findViewById(R.id.moduleScheduleTextView);
         previousDayButton = view.findViewById(R.id.previousDayButton);
