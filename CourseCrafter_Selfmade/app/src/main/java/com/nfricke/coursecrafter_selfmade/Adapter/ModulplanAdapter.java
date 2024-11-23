@@ -1,7 +1,5 @@
 package com.nfricke.coursecrafter_selfmade.Adapter;
 
-import static java.security.AccessController.getContext;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
