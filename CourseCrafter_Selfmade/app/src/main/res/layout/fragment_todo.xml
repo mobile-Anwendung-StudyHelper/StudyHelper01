@@ -9,9 +9,7 @@
     <ListView
         android:id="@+id/todoListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="1dp"
-        android:divider="@android:color/darker_gray" />
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTodoButton"

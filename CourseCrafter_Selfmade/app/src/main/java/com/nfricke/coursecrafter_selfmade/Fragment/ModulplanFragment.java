@@ -4,16 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.nfricke.coursecrafter_selfmade.Adapter.ModulplanAdapter;
+import com.nfricke.coursecrafter_selfmade.DAO.Modul;
 import com.nfricke.coursecrafter_selfmade.MainActivity;
 import com.nfricke.coursecrafter_selfmade.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ModulplanFragment extends Fragment {
@@ -21,9 +26,9 @@ public class ModulplanFragment extends Fragment {
     private int currentDayIndex = 1;
 
     private TextView currentDayTextView;
-    private TextView moduleScheduleTextView;
     private Button previousDayButton;
     private Button nextDayButton;
+    private ListView moduleScheduleListView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +69,7 @@ public class ModulplanFragment extends Fragment {
 
         //Initialize layout links
         currentDayTextView = view.findViewById(R.id.currentDayTextView);
-        moduleScheduleTextView = view.findViewById(R.id.moduleScheduleTextView);
+        moduleScheduleListView = view.findViewById(R.id.moduleScheduleListView);
         previousDayButton = view.findViewById(R.id.previousDayButton);
         nextDayButton = view.findViewById(R.id.nextDayButton);
 
@@ -81,41 +86,45 @@ public class ModulplanFragment extends Fragment {
     //navigation function (boolean true == forward / false == backwards
     private void navigateDay(boolean forward) {
         if (forward) {
-            currentDayIndex = ((currentDayIndex) % (((MainActivity)getActivity()).wochentage.length-1))+1;
+            currentDayIndex = ((currentDayIndex) % (((MainActivity) getActivity()).wochentage.length - 1)) + 1;
         } else {
-            currentDayIndex = ((currentDayIndex - 2 + (((MainActivity)getActivity()).wochentage.length-1)) % (((MainActivity)getActivity()).wochentage.length-1))+1;
+            currentDayIndex = ((currentDayIndex - 2 + (((MainActivity) getActivity()).wochentage.length - 1)) % (((MainActivity) getActivity()).wochentage.length - 1)) + 1;
         }
         updateDayView();
     }
 
     //Set modules and Day
     private void updateDayView() {
-        currentDayTextView.setText(((MainActivity)getActivity()).wochentage[currentDayIndex]);
+        currentDayTextView.setText(((MainActivity) getActivity()).wochentage[currentDayIndex]);
         displayModulesForCurrentDay();
     }
 
     //Get module by day, sort and display
     private void displayModulesForCurrentDay() {
-        StringBuilder scheduleBuilder = new StringBuilder();
+        ArrayList<String> scheduleList = new ArrayList<>();
 
         for (int block = 1; block < ((MainActivity)getActivity()).bloecke.length; block++) {
-            // Fetch modules for the current day and block
             String[][] modules = ((MainActivity)getActivity()).modulManager.getByTagBlock(currentDayIndex, block);
 
             if (modules.length > 0) {
-                // Header for the block time
-                scheduleBuilder.append(((MainActivity)getActivity()).bloecke[block]).append(":\n");
+                StringBuilder blockBuilder = new StringBuilder();
+                blockBuilder.append(((MainActivity)getActivity()).bloecke[block]).append(";");
+
                 for (String[] module : modules) {
-                    scheduleBuilder
-                            .append("")
-                            .append(module[0]) // Module Name
+                    blockBuilder.append("\n")
+                            .append(module[0])
                             .append(" - " + getString(R.string.room) + ": ")
-                            .append(module[1]) // Room
-                            .append("\n");
+                            .append(module[1]);
                 }
-                scheduleBuilder.append("\n");
+                scheduleList.add(blockBuilder.toString());
             }
         }
-        moduleScheduleTextView.setText(scheduleBuilder.length() > 0 ? scheduleBuilder.toString() : getString(R.string.no_modul));
+
+        if (scheduleList.isEmpty()) {
+            scheduleList.add(getString(R.string.no_modul));
+        }
+
+        ModulplanAdapter adapter = new ModulplanAdapter(getContext(), scheduleList);
+        moduleScheduleListView.setAdapter(adapter);
     }
 }
