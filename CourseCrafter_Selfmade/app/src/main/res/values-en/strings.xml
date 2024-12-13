@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CourseCrafter</string>
 
+    <string name="more_option">More options</string>
     <string name="modullist_fragment_title">Modul List</string>
     <string name="modulplan_fragment_title">Modul Plan</string>
     <string name="faq_fragment_title">Study Tips</string>

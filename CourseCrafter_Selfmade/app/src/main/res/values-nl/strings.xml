@@ -1,6 +1,7 @@
     <resources>
         <string name="app_name">CursusCrafter</string>
-    <string name="modullist_fragment_title">Modulenlijst</string>
+        <string name="more_option">Meer opties</string>
+        <string name="modullist_fragment_title">Modulenlijst</string>
     <string name="modulplan_fragment_title">Modulenplan</string>
     <string name="faq_fragment_title">Tips voor het studeren</string>
     <string name="rechner_fragment_title">Rekenmachine</string>
