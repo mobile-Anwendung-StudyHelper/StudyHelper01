@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ public class NavFragment extends Fragment {
 
     private View view;
     private ListView listView;
+    private TextView TitleTextView;
 
     @Nullable
     @Override
@@ -29,6 +31,8 @@ public class NavFragment extends Fragment {
 
         //Initialize layout links
         listView = view.findViewById(R.id.navListView);
+        TitleTextView = view.findViewById(R.id.navTitletext);
+        TitleTextView.setText(getString(R.string.more_option));
 
         //Setup the menu items
         final String[] options = {
